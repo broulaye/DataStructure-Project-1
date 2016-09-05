@@ -41,7 +41,7 @@ public class HashTest extends TestCase {
 		}
         
     }
-    public void testNagtiveSize() {
+    public void testNegativeSize() {
         Hash table;
         try {
             table = new Hash(-2);
