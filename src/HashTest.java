@@ -62,8 +62,26 @@ public class HashTest extends TestCase {
         Hash table;
         try {
             table = new Hash(-2);
-            table.insertString("fdf");
+            table.insertString("cheick");
         } 
+        catch (Exception e) {
+            assertTrue(e instanceof Exception);
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Test for duplicate strings.
+     * TODO: implement get method
+     */
+    public void testDuplicateStrings() {
+        try {
+            Hash table = new Hash(3);
+            String str = "berthe";
+            int position1 = table.insertString(str);
+            int position2 = table.insertString(str);
+            assertEquals(position2, position1);
+        }
         catch (Exception e) {
             assertTrue(e instanceof Exception);
             e.printStackTrace();

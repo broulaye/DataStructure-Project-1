@@ -60,9 +60,6 @@ public class Hash {
         int pos = index;
         int i = 0;
         while (valueArray[pos] != null) {
-            if (valueArray[pos] == str) {
-                return pos;
-            }
             pos = (pos + ++i * i) % valueArray.length;
             if (pos == index) {
                 throw new Exception("WARN: Cannot insert string");
