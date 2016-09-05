@@ -2,77 +2,91 @@
  * Hash table class.
  *
  * @author Cheick Berthe
- * @version Sep 5, 2016
+ * @author Broulaye Doumbia
+ * @version 09/05/2015
  */
 
 public class Hash {
 
     /**
      * Create a new Hash object.
-     * @throws Exception thrown when negative size value is passed
+     * 
+     * @throws Exception
+     *             thrown when negative size value is passed
+     * @param initialSize
+     *            represent the hash table's initial size
      */
     public Hash(int initialSize) throws Exception {
-    	if (initialSize <= 0) {
-    		throw new Exception("WARN: invalid size type");
-    	}
+        if (initialSize <= 0) {
+            throw new Exception("WARN: invalid size type");
+        }
         valueArray = new String[initialSize];
         numbElements = 0;
     }
+
     /**
      * 
-     * @param arr (array to be resized)
-     * @param newSize (new size)
+     * @param arr
+     *            (array to be resized)
+     * @param newSize
+     *            (new size)
      * @return new array
      */
     private String[] resizeArray(String[] arr, int newSize) {
-    	String[] newArray = new String[newSize];
-    	for (int it = 0; it < arr.length;  it++) {
-    		if (arr[it] != null) {
-    			newArray[it] = arr[it];
-    		}
-    	}
-    	return newArray;
+        String[] newArray = new String[newSize];
+        for (int it = 0; it < arr.length; it++) {
+            if (arr[it] != null) {
+                newArray[it] = arr[it];
+            }
+        }
+        return newArray;
     }
-    
+
     // Array of strings
     private String[] valueArray;
     // number of elements in table
     private int numbElements;
+
     /**
      * 
-     * @param str (string to insert)
+     * @param str
+     *            (string to insert)
      * @return position of insertion
-     * @throws Exception when all possible slots have been proved and are occupied
+     * @throws Exception
+     *             when all possible slots have been proved and are occupied
      */
     public int insertString(String str) throws Exception {
-    	int index;
-    	int pos = index = hash(str, valueArray.length);
-    	int i = 0;
-    	while (valueArray[pos] != null) {
-    		pos = (pos + ++i * i) % valueArray.length;
-    		if (pos == index) {
-    			throw new Exception("WARN: Cannot insert string");
-    		}
-    	}
+        int index = hash(str, valueArray.length);
+        int pos = index;
+        int i = 0;
+        while (valueArray[pos] != null) {
+            pos = (pos + ++i * i) % valueArray.length;
+            if (pos == index) {
+                throw new Exception("WARN: Cannot insert string");
+            }
+        }
         valueArray[pos] = str;
         numbElements++;
         if (numbElements >= (valueArray.length >> 1)) {
-        	valueArray = resizeArray(valueArray, valueArray.length * 2);
+            valueArray = resizeArray(valueArray, valueArray.length * 2);
         }
-       	return index;
+        return index;
     }
+
     /**
-     * 
+     * print the hash table
      */
     public void printTable() {
-    	for (String string : valueArray) {
-			if (string != null) {
-				System.out.println(string);
-			} else { 
-				System.out.println("**NULL**");
-			}
-		}
+        for (String string : valueArray) {
+            if (string != null) {
+                System.out.println(string);
+            } 
+            else {
+                System.out.println("**NULL**");
+            }
+        }
     }
+
     /**
      * Compute the hash function. Uses the "sfold" method from the OpenDSA
      * module on hash functions
@@ -104,6 +118,6 @@ public class Hash {
             mult *= 256;
         }
 
-        return (int)(Math.abs(sum) % m);
+        return (int) (Math.abs(sum) % m);
     }
 }

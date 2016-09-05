@@ -1,6 +1,12 @@
 
 import student.TestCase;
-
+/**
+ * This class the double linked list
+ * @author Broulaye Doumbia
+ * @author Cheick Berthe
+ * @version 09/05/2016
+ *
+ */
 public class DLLinkedListTest extends TestCase {
     
     /**

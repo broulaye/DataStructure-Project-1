@@ -5,7 +5,8 @@ import student.TestCase;
  *  Test the hash function (you should throw this away for your project)
  *
  *  @author Cheick Berthe
- *  @version Sep 5, 2016
+ *  @author Broulaye Doumbia
+ *  @version 09/05/2016
  */
 public class HashTest extends TestCase {
     private static final String ALPHA_NUMERIC_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";

@@ -1,6 +1,5 @@
 import student.TestCase;
 
-
 /**
  * This class test the command class
  * 
@@ -10,9 +9,8 @@ import student.TestCase;
  *
  */
 
-
 public class CommandTest extends TestCase {
-    
+
     /**
      * the list we will use
      */
@@ -25,7 +23,7 @@ public class CommandTest extends TestCase {
 
     public void setUp() {
         command1 = new Command();
-        String[] values = {"Lil Wayne", "A Mili"};
+        String[] values = { "Lil Wayne", "A Mili" };
         command2 = new Command(Operation.insert, null, values);
     }
 
@@ -33,7 +31,7 @@ public class CommandTest extends TestCase {
      * Tests getOp method
      */
     public void testgetOp() {
-       assertEquals(command2.getOp(), Operation.insert);
+        assertEquals(command2.getOp(), Operation.insert);
     }
 
     /**
@@ -65,23 +63,23 @@ public class CommandTest extends TestCase {
      * This tests getValues method
      */
     public void testgetValues() {
-        String[] values = {"Lil Wayne", "A Mili"};
-        for(int i = 0; i < values.length; i++) {
+        String[] values = { "Lil Wayne", "A Mili" };
+        for (int i = 0; i < values.length; i++) {
             assertEquals(values[i], command2.getValues()[i]);
         }
-        
+
     }
 
     /**
      * This tests the setValues method
      */
     public void testsetValues() {
-        String[] values = {"Lil Wayne", "A Mili"};
+        String[] values = { "Lil Wayne", "A Mili" };
         command1.setValues(values);
-        for(int i = 0; i < values.length; i++) {
+        for (int i = 0; i < values.length; i++) {
             assertEquals(command1.getValues()[i], command2.getValues()[i]);
         }
-        
+
     }
 
     /**
@@ -94,5 +92,4 @@ public class CommandTest extends TestCase {
         assertEquals(command2.toString(), "insert artist Lil Wayne A Mili");
     }
 
-    
 }

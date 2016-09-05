@@ -23,8 +23,7 @@ public class Parser {
      */
     public static void parse(String fileN) {
 
-
-		// create new file using the given file name
+        // create new file using the given file name
         File file = new File(fileN);
 
         // create a scanner object
@@ -54,69 +53,69 @@ public class Parser {
                 String[] line = token.split(" ");
 
                 switch (line[0]) {
-                case "insert":
-                    command.setOp(Operation.insert);
+                    case "insert":
+                        command.setOp(Operation.insert);
 
-                    for (int i = 1; i < line.length; i++) {
-                        s += line[i] + " ";
+                        for (int i = 1; i < line.length; i++) {
+                            s += line[i] + " ";
+                        }
+
+                        value = s.split("<SEP>");
+                        command.setValues(value);
+                        break;
+                    case "remove":
+
+                        command.setOp(Operation.remove);
+
+                        if (line[1].equals("song")) {
+                            command.setTyp(Type.Song);
+                        }
+
+                        else if (line[1].equals("artist")) {
+                            command.setTyp(Type.Artist);
+                        }
+
+                        else {
+                            System.out.println("Illegal type");
+                        }
+
+                        for (int i = 2; i < line.length; i++) {
+                            s += line[i] + " ";
+                        }
+
+                        value[0] = s;
+                        command.setValues(value);
+
+                        break;
+                    case "print":
+                        command.setOp(Operation.print);
+
+                        if (line[1].equals("song")) {
+                            command.setTyp(Type.Song);
+                        } 
+                        else if (line[1].equals("artist")) {
+                            command.setTyp(Type.Artist);
+                        } 
+                        else if (line[1].equals("blocks")) {
+                            command.setTyp(Type.Block);
+                        } 
+                        else {
+                            System.out.println("Illegal type");
+                        }
+
+                        for (int i = 2; i < line.length; i++) {
+                            s += line[i] + " ";
+                        }
+
+                        value = s.split("");
+                        command.setValues(value);
+
+                        break;
+                    default:
+                        System.out.println("Illegal Operation");
+                        break;
+
                     }
-
-                    value = s.split("<SEP>");
-                    command.setValues(value);
-                    break;
-                case "remove":
-
-                    command.setOp(Operation.remove);
-
-                    if (line[1].equals("song")) {
-                        command.setTyp(Type.Song);
-                    }
-
-                    else if (line[1].equals("artist")) {
-                        command.setTyp(Type.Artist);
-                    }
-
-                    else {
-                        System.out.println("Illegal type");
-                    }
-
-                    for (int i = 2; i < line.length; i++) {
-                        s += line[i] + " ";
-                    }
-
-                    value[0] = s;
-                    command.setValues(value);
-
-                    break;
-                case "print":
-                    command.setOp(Operation.print);
-
-                    if (line[1].equals("song")) {
-                        command.setTyp(Type.Song);
-                    }
-                    else if (line[1].equals("artist")) {
-                        command.setTyp(Type.Artist);
-                    }
-                    else if (line[1].equals("blocks")) {
-                        command.setTyp(Type.Block);
-                    }
-                    else {
-                        System.out.println("Illegal type");
-                    }
-
-                    for (int i = 2; i < line.length; i++) {
-                        s += line[i] + " ";
-                    }
-
-                    value = s.split("");
-                    command.setValues(value);
-
-                    break;
-                default:
-                    System.out.println("Illegal Operation");
-                    break;
-
-                }
 
                 commandsList.add(command);
 

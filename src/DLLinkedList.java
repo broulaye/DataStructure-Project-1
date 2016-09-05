@@ -1,4 +1,11 @@
-
+/**
+ * This class represent a generic double linked list
+ * @author Broulaye Doumbia
+ * @author Cheick Berthe
+ * @version 09/05/2016
+ * 
+ * @param <T> represent generic type
+ */
 public class DLLinkedList<T> {
 
     private static class Node<T> {
@@ -9,7 +16,8 @@ public class DLLinkedList<T> {
         /**
          * Creates a new node with the given data
          *
-         * @param d the data to put inside the node
+         * @param d
+         *            the data to put inside the node
          */
         public Node(T d) {
             data = d;
@@ -18,7 +26,8 @@ public class DLLinkedList<T> {
         /**
          * Sets the node after this node
          *
-         * @param n the node after this one
+         * @param n
+         *            the node after this one
          */
         public void setNext(Node<T> n) {
             next = n;
@@ -27,7 +36,8 @@ public class DLLinkedList<T> {
         /**
          * Sets the node before this one
          *
-         * @param n the node before this one
+         * @param n
+         *            the node before this one
          */
         public void setPrevious(Node<T> n) {
             previous = n;
@@ -59,31 +69,31 @@ public class DLLinkedList<T> {
         public T getData() {
             return data;
         }
-        
-        
+
     }
+
     /**
-     * Size of the list 
+     * Size of the list
      */
     private int size;
-    
+
     /**
      * Point to the head of the list
      */
     private Node<T> head;
-    
+
     /**
      * Point to the tail of the list
      */
     private Node<T> tail;
-    
+
     /**
      * Constructor that create new List
      */
     public DLLinkedList() {
         init();
     }
-    
+
     /**
      * Initialize the list
      */
@@ -94,9 +104,8 @@ public class DLLinkedList<T> {
         tail.setPrevious(head);
         size = 0;
     }
-    
-    
-     /**
+
+    /**
      * Checks if the array is empty
      *
      * @return true if the array is empty
@@ -113,77 +122,82 @@ public class DLLinkedList<T> {
     public int size() {
         return size;
     }
-    
+
     /**
      * clear the list
      */
-    public void clear(){
+    public void clear() {
         init();
     }
-    
+
     /**
      * Insert new element in the list
      * 
-     * @param element to be added
+     * @param element
+     *            to be added
      */
     public void add(T element) {
         add(size, element);
     }
-    
+
     /**
      * gets the node at that index
      * 
-     * @param index index of query
+     * @param index
+     *            index of query
      * @return node at index
      */
     private Node<T> getNodeAtIndex(int index) {
         if (index < 0 || size() <= index) {
-            throw new IndexOutOfBoundsException("No element exists at " 
-                    + index);
+            throw new IndexOutOfBoundsException(""
+                    + "No element exists at " + index);
         }
-        
+
         Node<T> current;
-        
+
         int compare = size >> 1;
-        
+
         if (index <= compare) {
             current = head.next();
             for (int i = 0; i < index; i++) {
                 current = current.next();
             }
-            
-        }
+
+        } 
         else {
-            
+
             current = tail.previous();
-            for (int i = size; i > (index+1); i--) {
+            for (int i = size; i > (index + 1); i--) {
                 current = current.previous();
             }
         }
-        
-        
+
         return current;
     }
-    
+
     /**
      * Adds the object to the position in the list
      *
-     * @param index where to add the object
-     *            
-     * @param obj the object to add
-     *            
-     * @throws IndexOutOfBoundsException if index is less than zero or greater than size
-     *             
-     * @throws IllegalArgumentException if obj is null
-     *             
+     * @param index
+     *            where to add the object
+     * 
+     * @param obj
+     *            the object to add
+     * 
+     * @throws IndexOutOfBoundsException
+     *             if index is less than zero or greater than size
+     * 
+     * @throws IllegalArgumentException
+     *             if obj is null
+     * 
      */
     public void add(int index, T obj) {
         if (index < 0 || size < index) {
             throw new IndexOutOfBoundsException();
         }
         if (obj == null) {
-            throw new IllegalArgumentException("Cannot add null "
-                    + "objects to a list");
+            throw new IllegalArgumentException(""
+                    + "Cannot add null " + "objects to a list");
         }
 
         Node<T> nodeAfter;
@@ -202,14 +216,16 @@ public class DLLinkedList<T> {
         size++;
 
     }
-    
+
     /**
      * Removes the element at the specified index from the list
      *
-     * @param index where the object is located
-     *           
-     * @throws IndexOutOfBoundsException if there is not an element at the index
-     *             
+     * @param index
+     *            where the object is located
+     * 
+     * @throws IndexOutOfBoundsException
+     *             if there is not an element at the index
+     * 
      * @return true if successful
      */
     public boolean remove(int index) {
@@ -223,8 +239,9 @@ public class DLLinkedList<T> {
     /**
      * Removes the first object in the list that equals obj
      *
-     * @param obj the object to remove
-     *            
+     * @param obj
+     *            the object to remove
+     * 
      * @return true if the object was found and removed
      */
 
@@ -257,7 +274,7 @@ public class DLLinkedList<T> {
                 builder.append(element.toString());
                 if (currNode.next != tail) {
                     builder.append(", ");
-                }  
+                }
                 currNode = currNode.next();
             }
         }
@@ -269,15 +286,17 @@ public class DLLinkedList<T> {
     /**
      * Gets the object at the given position
      *
-     * @param index where the object is located
-     *            
+     * @param index
+     *            where the object is located
+     * 
      * @return The object at the given position
-     * @throws IndexOutOfBoundsException if there no node at the given index
-     *             
+     * @throws IndexOutOfBoundsException
+     *             if there no node at the given index
+     * 
      */
     public T get(int index) {
-        
+
         return getNodeAtIndex(index).getData();
     }
-    
+
 }
