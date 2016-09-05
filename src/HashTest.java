@@ -27,7 +27,7 @@ public class HashTest extends TestCase {
     /**
      * Test the hash table
      */
-    public void testh() {
+    public void testInsert() {
 
         Hash myHash;
 		try {
@@ -40,5 +40,13 @@ public class HashTest extends TestCase {
 			e.printStackTrace();
 		}
         
+    }
+    public void testNagtiveSize() {
+        Hash table;
+        try {
+            table = new Hash(-2);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
