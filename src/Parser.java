@@ -115,7 +115,7 @@ public class Parser {
                         System.out.println("Illegal Operation");
                         break;
 
-                    }
+                }
 
                 commandsList.add(command);
 
