@@ -28,7 +28,7 @@ public class Hash {
     	String[] newArray = new String[newSize];
     	for (int it = 0; it < arr.length;  it++) {
     		if (arr[it] != null) {
-    			newArray[it] = new String(arr[it]);
+    			newArray[it] = arr[it];
     		}
     	}
     	return newArray;
@@ -54,7 +54,7 @@ public class Hash {
     			throw new Exception("WARN: Cannot insert string");
     		}
     	}
-        valueArray[pos] = new String(str);
+        valueArray[pos] = str;
         numbElements++;
         if (numbElements >= (valueArray.length >> 1)) {
         	valueArray = resizeArray(valueArray, valueArray.length * 2);
