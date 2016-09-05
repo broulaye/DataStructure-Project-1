@@ -39,6 +39,7 @@ public class Parser {
 
 	        String token = "";
 	        
+	        
 	        //while the file got for line execute the following commands
 	        while(reader.hasNextLine()) {
 

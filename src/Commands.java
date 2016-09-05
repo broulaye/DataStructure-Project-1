@@ -17,14 +17,6 @@ public class Commands {
 		commandList = new LinkedList<Command>();
 	}
 	
-	/**
-	 * Constructor that create a linklist of command
-	 * set to the value provided
-	 * @param commandList new commandList
-	 */
-	public Commands(LinkedList<Command> commandList) {
-		this.commandList = commandList;
-	}
 
 	/**
 	 * Get the current list of command
