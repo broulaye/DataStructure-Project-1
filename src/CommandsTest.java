@@ -72,9 +72,10 @@ public class CommandsTest extends TestCase {
     	String[] values = {"Lil Wayne", "A Mili"};
         command2 = new Command(Operation.insert, null, values);
     	LinkedList<Command> list = new LinkedList<>();
-    	list.add(command2);
+    	//list.add(command2);
     	
     	commandsList.setCommandList(list);
+    	commandsList.add(command2);
     	
     	assertEquals(command2, commandsList.getCommandList().get(0));
 

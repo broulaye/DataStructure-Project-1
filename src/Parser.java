@@ -144,10 +144,10 @@ public class Parser {
 	/**
 	 * main method just for testing purposes 
 	 * @param args contain file name
-	 */
+	 
 	public static void main(String args[]) {
 		
 		parse("P1sampleInput.txt");
 	}
-	
+	*/
 }

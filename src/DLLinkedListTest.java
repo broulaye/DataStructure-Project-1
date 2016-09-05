@@ -179,6 +179,25 @@ public class DLLinkedListTest extends TestCase {
 
 
     /**
+     * Test the get method
+     */
+    public void testGet() {
+    	list.add("A");
+    	list.add("B");
+    	list.add("C");
+    	list.add("D");
+    	list.add("E");
+    	list.add("F");
+    	list.add("G");
+    	list.add("H");
+    	list.add("I");
+    	
+    	assertEquals(list.get(7), "H");
+    	assertEquals(list.get(1), "B");
+    }
+    
+
+    /**
      * Tests isEmpty when empty and full
      */
     public void testIsEmpty() {

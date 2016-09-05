@@ -91,6 +91,8 @@ public class CommandTest extends TestCase {
     public void testtoString() {
         assertEquals(command1.toString(), "");
         assertEquals(command2.toString(), "insert Lil Wayne A Mili");
+        command2.setTyp(Type.Artist);
+        assertEquals(command2.toString(), "insert artist Lil Wayne A Mili");
     }
 
 	
