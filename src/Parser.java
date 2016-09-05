@@ -23,11 +23,9 @@ public class Parser {
      */
     public static void parse(String fileN) {
 
-        // store the file name
-        String fileName = fileN;
 
-        // create new file using the given file name
-        File file = new File(fileName);
+		// create new file using the given file name
+        File file = new File(fileN);
 
         // create a scanner object
         Scanner reader = null;
@@ -95,13 +93,13 @@ public class Parser {
 
                     if (line[1].equals("song")) {
                         command.setTyp(Type.Song);
-                    } 
+                    }
                     else if (line[1].equals("artist")) {
                         command.setTyp(Type.Artist);
-                    } 
+                    }
                     else if (line[1].equals("blocks")) {
                         command.setTyp(Type.Block);
-                    } 
+                    }
                     else {
                         System.out.println("Illegal type");
                     }
@@ -133,14 +131,4 @@ public class Parser {
 
     }
 
-    /**
-     * main method just for testing purposes
-     * 
-     * @param args
-     *            contain file name
-     * 
-     *            public static void main(String args[]) {
-     * 
-     *            parse("P1sampleInput.txt"); }
-     */
 }

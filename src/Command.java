@@ -112,7 +112,7 @@ public class Command {
         }
 
         if (typ != null) {
-            s.append(typ.toString() + " ");
+            s.append(typ.toString()).append(" ");
         }
 
         if (values != null) {

@@ -34,7 +34,7 @@ public class ParserTest extends TestCase {
         Exception e = null;
         
         try {
-            parser.parse("error file");
+            Parser.parse("error file");
         } 
         catch (Exception exception) {
             e = exception;
@@ -45,7 +45,7 @@ public class ParserTest extends TestCase {
         e = null;
         
         try {
-            parser.parse("P1sampleInput.txt");
+            Parser.parse("P1sampleInput.txt");
         } 
         catch (Exception exception) {
             e = exception;

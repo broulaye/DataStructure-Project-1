@@ -91,16 +91,16 @@ public class Hash {
         for (int j = 0; j < intLength; j++) {
             char[] c = s.substring(j * 4, (j * 4) + 4).toCharArray();
             long mult = 1;
-            for (int k = 0; k < c.length; k++) {
-                sum += c[k] * mult;
+            for (char aC : c) {
+                sum += aC * mult;
                 mult *= 256;
             }
         }
 
         char[] c = s.substring(intLength * 4).toCharArray();
         long mult = 1;
-        for (int k = 0; k < c.length; k++) {
-            sum += c[k] * mult;
+        for (char aC : c) {
+            sum += aC * mult;
             mult *= 256;
         }
 

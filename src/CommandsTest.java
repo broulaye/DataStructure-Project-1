@@ -35,7 +35,7 @@ public class CommandsTest extends TestCase {
         Command command2;
         String[] values = {"Lil Wayne", "A Mili"};
         command2 = new Command(Operation.insert, null, values);
-        LinkedList<Command> list = new LinkedList<>();
+        LinkedList<Command> list = new LinkedList<Command>();
         list.add(command2);
         
         commandsList.getCommandList().add(command2);
@@ -54,7 +54,7 @@ public class CommandsTest extends TestCase {
         Command command2;
         String[] values = {"Lil Wayne", "A Mili"};
         command2 = new Command(Operation.insert, null, values);
-        LinkedList<Command> list = new LinkedList<>();
+        LinkedList<Command> list = new LinkedList<Command>();
         list.add(command2);
         
         commandsList.setCommandList(list);
@@ -70,7 +70,7 @@ public class CommandsTest extends TestCase {
         Command command2;
         String[] values = {"Lil Wayne", "A Mili"};
         command2 = new Command(Operation.insert, null, values);
-        LinkedList<Command> list = new LinkedList<>();
+        LinkedList<Command> list = new LinkedList<Command>();
         //list.add(command2);
         
         commandsList.setCommandList(list);

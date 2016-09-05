@@ -133,7 +133,7 @@ public class DLLinkedList<T> {
     /**
      * gets the node at that index
      * 
-     * @param index
+     * @param index index of query
      * @return node at index
      */
     private Node<T> getNodeAtIndex(int index) {
@@ -142,7 +142,7 @@ public class DLLinkedList<T> {
                     + index);
         }
         
-        Node<T> current = null;
+        Node<T> current;
         
         int compare = size >> 1;
         
@@ -216,7 +216,6 @@ public class DLLinkedList<T> {
         Node<T> nodeToBeRemoved = getNodeAtIndex(index);
         nodeToBeRemoved.previous().setNext(nodeToBeRemoved.next());
         nodeToBeRemoved.next().setPrevious(nodeToBeRemoved.previous());
-        nodeToBeRemoved = null;
         size--;
         return true;
     }
