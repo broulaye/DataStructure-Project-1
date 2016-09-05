@@ -20,11 +20,8 @@ public enum Type {
         else if (this == Artist) {
             return "artist";
         }
-        else if (this == Block) {
-            return "blocks";
-        }
         else {
-            return "Illegal Type";
+            return "blocks";
         }
     }
 	

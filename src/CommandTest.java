@@ -1,4 +1,5 @@
-import student.TestCase; 
+import student.TestCase;
+import student.testingsupport.GObjectFilter; 
 
 
 /**
@@ -33,21 +34,23 @@ public class CommandTest extends TestCase {
      * Tests getOp method
      */
     public void testgetOp() {
-       
+       assertEquals(command2.getOp(), Operation.insert);
     }
 
     /**
      * Tests setOp method
      */
     public void testsetOp() {
-        
+        command1.setOp(Operation.print);
+        assertEquals(command1.getOp(), Operation.print);
     }
 
     /**
      * Tests getTyp method
      */
     public void testgetTyp() {
-        
+        command1.setTyp(Type.Artist);
+        assertEquals(command1.getTyp(), Type.Artist);
 
     }
 
@@ -55,28 +58,39 @@ public class CommandTest extends TestCase {
      * Tests setTyp method
      */
     public void testsetTyp() {
-        
+        command2.setTyp(Type.Block);
+        assertEquals(command2.getTyp(), Type.Block);
     }
 
     /**
      * This tests getValues method
      */
     public void testgetValues() {
-        
+    	String[] values = {"Lil Wayne", "A Mili"};
+    	for(int i = 0; i < values.length; i++) {
+    		assertEquals(values[i], command2.getValues()[i]);
+    	}
+    	
     }
 
     /**
      * This tests the setValues method
      */
     public void testsetValues() {
-        
+    	String[] values = {"Lil Wayne", "A Mili"};
+    	command1.setValues(values);
+    	for(int i = 0; i < values.length; i++) {
+    		assertEquals(command1.getValues()[i], command2.getValues()[i]);
+    	}
+    	
     }
 
     /**
      * This tests the toString method
      */
     public void testtoString() {
-        
+        assertEquals(command1.toString(), "");
+        assertEquals(command2.toString(), "insert Lil Wayne A Mili");
     }
 
 	

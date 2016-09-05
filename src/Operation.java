@@ -22,11 +22,8 @@ public enum Operation {
 	    else if (this == remove) {
 	        return "remove";
 	    }
-	    else if (this == print) {
-	        return "print";
-	    }
 	    else {
-	        return "Illegal Operation";
+	        return "print";
 	    }
 	}
 	

@@ -24,6 +24,10 @@ public class OperationTest extends TestCase {
 	 * Test toString method
 	 */
 	public void testtoString() {
-		
+		assertEquals("insert", newOperation.toString());
+		newOperation = Operation.print;
+		assertEquals("print", newOperation.toString());
+		newOperation = Operation.remove;
+		assertEquals("remove", newOperation.toString());
 	}
 }

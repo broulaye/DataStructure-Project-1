@@ -52,7 +52,15 @@ public class CommandsTest extends TestCase {
      * Tests setCommandList
      */
     public void testsetCommandList() {
-        
+    	Command command2;
+    	String[] values = {"Lil Wayne", "A Mili"};
+        command2 = new Command(Operation.insert, null, values);
+    	LinkedList<Command> list = new LinkedList<>();
+    	list.add(command2);
+    	
+    	commandsList.setCommandList(list);
+    	
+    	assertEquals(list, commandsList.getCommandList());
     }
 
     /**
@@ -60,7 +68,15 @@ public class CommandsTest extends TestCase {
      * to the list
      */
     public void testAdd() {
-        
+    	Command command2;
+    	String[] values = {"Lil Wayne", "A Mili"};
+        command2 = new Command(Operation.insert, null, values);
+    	LinkedList<Command> list = new LinkedList<>();
+    	list.add(command2);
+    	
+    	commandsList.setCommandList(list);
+    	
+    	assertEquals(command2, commandsList.getCommandList().get(0));
 
     }
 

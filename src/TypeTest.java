@@ -1,3 +1,4 @@
+
 import student.TestCase;
 
 /**
@@ -26,6 +27,11 @@ public class TypeTest extends TestCase {
 	 */
 	public void testtoString() {
 		
+		assertEquals("artist", newType.toString());
+		newType = Type.Block;
+		assertEquals("blocks", newType.toString());
+		newType = Type.Song;
+		assertEquals("song", newType.toString());
 	}
 	
 }
