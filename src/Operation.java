@@ -7,25 +7,28 @@
  *
  */
 public enum Operation {
-	insert, remove, print;
-	
-	/**
-	 * Get a string representation of the operation
-	 * @return a string representation of the operation
-	 */
-	public String toString() {
-		
-		
-		if (this == insert) {
-	        return "insert";
-	    }
-	    else if (this == remove) {
-	        return "remove";
-	    }
-	    else {
-	        return "print";
-	    }
-	}
-	
+    /**
+     * Represent the different operations
+     */
+    insert, remove, print;
+    
+    /**
+     * Get a string representation of the operation
+     * @return a string representation of the operation
+     */
+    public String toString() {
+        
+        
+        if (this == insert) {
+            return "insert";
+        }
+        else if (this == remove) {
+            return "remove";
+        }
+        else {
+            return "print";
+        }
+    }
+    
 
 }

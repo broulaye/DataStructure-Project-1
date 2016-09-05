@@ -1,8 +1,8 @@
 
 public class DLLinkedList<T> {
 
-	private static class Node<T> {
-		private Node<T> next;
+    private static class Node<T> {
+        private Node<T> next;
         private Node<T> previous;
         private T data;
 
@@ -59,44 +59,44 @@ public class DLLinkedList<T> {
         public T getData() {
             return data;
         }
-		
-		
-	}
-	/**
-	 * Size of the list 
-	 */
-	private int size;
-	
-	/**
-	 * Point to the head of the list
-	 */
-	private Node<T> head;
-	
-	/**
-	 * Point to the tail of the list
-	 */
-	private Node<T> tail;
-	
-	/**
-	 * Constructor that create new List
-	 */
-	public DLLinkedList() {
-		init();
-	}
-	
-	/**
-	 * Initialize the list
-	 */
-	private void init() {
-		head = new Node<T>(null);
-		tail = new Node<T>(null);
-		head.setNext(tail);
+        
+        
+    }
+    /**
+     * Size of the list 
+     */
+    private int size;
+    
+    /**
+     * Point to the head of the list
+     */
+    private Node<T> head;
+    
+    /**
+     * Point to the tail of the list
+     */
+    private Node<T> tail;
+    
+    /**
+     * Constructor that create new List
+     */
+    public DLLinkedList() {
+        init();
+    }
+    
+    /**
+     * Initialize the list
+     */
+    private void init() {
+        head = new Node<T>(null);
+        tail = new Node<T>(null);
+        head.setNext(tail);
         tail.setPrevious(head);
         size = 0;
-	}
-	
-	
-	 /**
+    }
+    
+    
+     /**
      * Checks if the array is empty
      *
      * @return true if the array is empty
@@ -118,16 +118,16 @@ public class DLLinkedList<T> {
      * clear the list
      */
     public void clear(){
-    	init();
+        init();
     }
     
     /**
      * Insert new element in the list
      * 
-     * @param new element to be added
+     * @param element to be added
      */
     public void add(T element) {
-    	add(size, element);
+        add(size, element);
     }
     
     /**
@@ -147,15 +147,15 @@ public class DLLinkedList<T> {
         int compare = size >> 1;
         
         if (index <= compare) {
-        	current = head.next();
+            current = head.next();
             for (int i = 0; i < index; i++) {
                 current = current.next();
             }
-        	
+            
         }
         else {
-        	
-        	current = tail.previous();
+            
+            current = tail.previous();
             for (int i = size; i > (index+1); i--) {
                 current = current.previous();
             }
@@ -164,7 +164,7 @@ public class DLLinkedList<T> {
         
         return current;
     }
-	
+    
     /**
      * Adds the object to the position in the list
      *
@@ -277,7 +277,7 @@ public class DLLinkedList<T> {
      *             
      */
     public T get(int index) {
-    	
+        
         return getNodeAtIndex(index).getData();
     }
     

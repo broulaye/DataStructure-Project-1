@@ -7,14 +7,17 @@
  *
  */
 public enum Type {
-	Song, Artist, Block;
-	
-	/**
-	 * Get a string representaion of the type
-	 * @return a string representation of the type
-	 */
-	public String toString() {
-		if (this == Song) {
+    /**
+     * Represent the different types 
+     */
+    Song, Artist, Block;
+    
+    /**
+     * Get a string representaion of the type
+     * @return a string representation of the type
+     */
+    public String toString() {
+        if (this == Song) {
             return "song";
         }
         else if (this == Artist) {
@@ -24,5 +27,5 @@ public enum Type {
             return "blocks";
         }
     }
-	
+    
 }

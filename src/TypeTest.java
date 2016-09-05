@@ -12,26 +12,26 @@ import student.TestCase;
 
 public class TypeTest extends TestCase {
 
-	
-	private Type newType;
-	
-	/**
-	 * Set up our variable
-	 */
-	public void setUp() {
-		newType = Type.Artist;
-	}
-	
-	/**
-	 * Test toString method
-	 */
-	public void testtoString() {
-		
-		assertEquals("artist", newType.toString());
-		newType = Type.Block;
-		assertEquals("blocks", newType.toString());
-		newType = Type.Song;
-		assertEquals("song", newType.toString());
-	}
-	
+    
+    private Type newType;
+    
+    /**
+     * Set up our variable
+     */
+    public void setUp() {
+        newType = Type.Artist;
+    }
+    
+    /**
+     * Test toString method
+     */
+    public void testtoString() {
+        
+        assertEquals("artist", newType.toString());
+        newType = Type.Block;
+        assertEquals("blocks", newType.toString());
+        newType = Type.Song;
+        assertEquals("song", newType.toString());
+    }
+    
 }

@@ -1,5 +1,4 @@
 import student.TestCase;
-import student.testingsupport.GObjectFilter; 
 
 
 /**
@@ -13,8 +12,8 @@ import student.testingsupport.GObjectFilter;
 
 
 public class CommandTest extends TestCase {
-	
-	/**
+    
+    /**
      * the list we will use
      */
     private Command command1;
@@ -66,23 +65,23 @@ public class CommandTest extends TestCase {
      * This tests getValues method
      */
     public void testgetValues() {
-    	String[] values = {"Lil Wayne", "A Mili"};
-    	for(int i = 0; i < values.length; i++) {
-    		assertEquals(values[i], command2.getValues()[i]);
-    	}
-    	
+        String[] values = {"Lil Wayne", "A Mili"};
+        for(int i = 0; i < values.length; i++) {
+            assertEquals(values[i], command2.getValues()[i]);
+        }
+        
     }
 
     /**
      * This tests the setValues method
      */
     public void testsetValues() {
-    	String[] values = {"Lil Wayne", "A Mili"};
-    	command1.setValues(values);
-    	for(int i = 0; i < values.length; i++) {
-    		assertEquals(command1.getValues()[i], command2.getValues()[i]);
-    	}
-    	
+        String[] values = {"Lil Wayne", "A Mili"};
+        command1.setValues(values);
+        for(int i = 0; i < values.length; i++) {
+            assertEquals(command1.getValues()[i], command2.getValues()[i]);
+        }
+        
     }
 
     /**
@@ -95,5 +94,5 @@ public class CommandTest extends TestCase {
         assertEquals(command2.toString(), "insert artist Lil Wayne A Mili");
     }
 
-	
+    
 }
