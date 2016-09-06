@@ -87,4 +87,21 @@ public class HashTest extends TestCase {
             e.printStackTrace();
         }
     }
+    
+    /**
+     * TestgetElement
+     */
+    public void testgetElemet() {
+    	try {
+            Hash table = new Hash(3);
+            String str = "berthe";
+            int position1 = table.insertString(str);
+            
+            assertEquals(1, table.getElement());
+        }
+        catch (Exception e) {
+            assertTrue(e instanceof Exception);
+            e.printStackTrace();
+        }
+    }
 }

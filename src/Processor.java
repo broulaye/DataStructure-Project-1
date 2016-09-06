@@ -23,7 +23,6 @@ public class Processor {
 	 * @param hashTable represent new hash table
 	 */
 	public Processor(Commands commands, Hash songHashTable, Hash artistHashTable) {
-		super();
 		this.commands = commands;
 		this.songHashTable = songHashTable;
 		this.artistHashTable = artistHashTable;
