@@ -40,10 +40,12 @@ public class HashTest extends TestCase {
     public void testInsert() {
 
         Hash myHash;
+        MemManager memManager;
         try {
-            myHash = new Hash(2);
+            memManager = new MemManager(2);
+            myHash = new Hash(2, memManager);
             for (int i = 0; i < 20; i++) {
-                myHash.insertString(randomAlphaNumeric(Math.round(6)));
+                myHash.insertHandle(randomAlphaNumeric(Math.round(6)));
             }
             myHash.printTable();
         } 
@@ -61,8 +63,8 @@ public class HashTest extends TestCase {
         
         Hash table;
         try {
-            table = new Hash(-2);
-            table.insertString("cheick");
+            table = new Hash(-2, new MemManager(2));
+            table.insertHandle("cheick");
         } 
         catch (Exception e) {
             assertTrue(e instanceof Exception);
@@ -75,12 +77,14 @@ public class HashTest extends TestCase {
      * TODO: implement get method
      */
     public void testDuplicateStrings() {
+        MemManager manager = new MemManager(3);
         try {
-            Hash table = new Hash(3);
+            Hash table = new Hash(3, manager);
             String str = "berthe";
-            int position1 = table.insertString(str);
-            int position2 = table.insertString(str);
-            assertEquals(position2, position1);
+            boolean result1 = table.insertHandle(str);
+            boolean result2 = table.insertHandle(str);
+            assertTrue(result1);
+            assertFalse(result2);
         }
         catch (Exception e) {
             assertTrue(e instanceof Exception);
@@ -92,10 +96,11 @@ public class HashTest extends TestCase {
      * TestgetElement
      */
     public void testgetElement() {
+        MemManager manager = new MemManager(3);
     	try {
-            Hash table = new Hash(3);
+            Hash table = new Hash(3, manager);
             String str = "berthe";
-            int position1 = table.insertString(str);
+            boolean result = table.insertHandle(str);
             
             assertEquals(1, table.getElement());
         }

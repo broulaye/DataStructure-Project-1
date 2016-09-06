@@ -16,33 +16,17 @@ public class Hash {
      * @param initialSize
      *            represent the hash table's initial size
      */
-    public Hash(int initialSize) throws Exception {
+    public Hash(int initialSize, MemManager memManager) throws Exception {
         if (initialSize <= 0) {
             throw new Exception("WARN: invalid size type");
         }
         valueArray = new String[initialSize];
         numbElements = 0;
-        manager = new MemManager(initialSize);
+        manager = memManager;
     }
     String handle2String(Handle theHandle) {
-        return this.manager.get(theHandle);
-    }
-    /**
-     * 
-     * @param arr
-     *            (array to be resized)
-     * @param newSize
-     *            (new size)
-     * @return new array
-     */
-    private String[] resizeArray(String[] arr, int newSize) {
-        String[] newArray = new String[newSize];
-        for (int it = 0; it < arr.length; it++) {
-            if (arr[it] != null) {
-                newArray[it] = arr[it];
-            }
-        }
-        return newArray;
+
+        return manager.get(theHandle);
     }
 
     // Array of strings
@@ -61,7 +45,7 @@ public class Hash {
      * @throws Exception
      *             when all possible slots have been proved and are occupied
      */
-    public boolean insertString(String str) throws Exception {
+    public boolean insertHandle(String str) throws Exception {
         int index = hash(str, valueArray.length);
         int pos = index;
         int i = 0;
@@ -74,9 +58,9 @@ public class Hash {
         valueArray[pos] = str;
         numbElements++;
         if (numbElements >= (valueArray.length >> 1)) {
-            valueArray = resizeArray(valueArray, valueArray.length * 2);
+            valueArray = Helper.resizeArray(valueArray, valueArray.length * 2);
         }
-        return index;
+        return true;
     }
 
     /**

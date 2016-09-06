@@ -1,28 +1,31 @@
+import javafx.util.Pair;
+
 /**
  * @author Cheick Berthe
  * @author Broulaye Doumbia
  * @version 9/5/2016.
  */
 public class MemManager {
-    // Freeblock list
-    private DLLinkedList<byte> freeBlockList;
 
+    // memory pool
+    MemoryPool memoryPool;
     /**
      * constructor
      * @param poolsize size of memory pool in bytes
      */
     public MemManager(int poolsize) {
-        freeBlockList = new DLLinkedList<>();
+
+        memoryPool = new MemoryPool(poolsize);
     }
 
 
     /**
      * Insert a record and return its position handle
-     * @param space record to be inserted
-     * @param size length of the record
-     * @return
+     * @param str string to be stored
+     * @return handle for str
      */
-    public Handle insert(byte[] space, int size) {
+    public Handle insert(String str) {
+        memoryPool.put(str.getBytes(), str.length());
         return null;
     }
 
@@ -41,15 +44,25 @@ public class MemManager {
      * @param space returned record
      * @param theHandle handle to be retrieved
      * @param size size of record to be returned
-     * @return record with
+     * @return number of bytes copied into space
      */
-    public int get(byte[] space, Handle theHandle, int size) {
+    private int get(byte[] space, Handle theHandle, int size) {
         // TODO
         return 0;
     }
-
+    private
     // Dump a printout of the freeblock list
     void dump() {
-        freeBlockList.toString();
+        memoryPool.printFreeBlocks();
+    }
+
+    /**
+     *
+     * @param theHandle
+     * @return
+     */
+    public String get(Handle theHandle) {
+
+        return null;
     }
 }

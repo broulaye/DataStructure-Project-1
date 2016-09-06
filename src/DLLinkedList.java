@@ -8,10 +8,10 @@
  */
 public class DLLinkedList<T> {
 
-    private static class Node<T> {
-        private Node<T> next;
-        private Node<T> previous;
-        private T data;
+    protected static class Node<T> {
+        protected Node<T> next;
+        protected Node<T> previous;
+        protected T data;
 
         /**
          * Creates a new node with the given data
@@ -75,17 +75,17 @@ public class DLLinkedList<T> {
     /**
      * Size of the list
      */
-    private int size;
+    protected int size;
 
     /**
      * Point to the head of the list
      */
-    private Node<T> head;
+    protected Node<T> head;
 
     /**
      * Point to the tail of the list
      */
-    private Node<T> tail;
+    protected Node<T> tail;
 
     /**
      * Constructor that create new List
@@ -97,7 +97,7 @@ public class DLLinkedList<T> {
     /**
      * Initialize the list
      */
-    private void init() {
+    protected void init() {
         head = new Node<T>(null);
         tail = new Node<T>(null);
         head.setNext(tail);
@@ -131,7 +131,7 @@ public class DLLinkedList<T> {
     }
 
     /**
-     * Insert new element in the list
+     * Appends element to list
      * 
      * @param element
      *            to be added
@@ -147,7 +147,7 @@ public class DLLinkedList<T> {
      *            index of query
      * @return node at index
      */
-    private Node<T> getNodeAtIndex(int index) {
+    protected Node<T> getNodeAtIndex(int index) {
         if (index < 0 || size() <= index) {
             throw new IndexOutOfBoundsException(""
                     + "No element exists at " + index);

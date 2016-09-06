@@ -39,9 +39,9 @@ public class Processor {
 				switch(command.getOp()) {
 				    case insert:
 				    	values = command.getValues();
-				    	songHashTable.insertString(values[0]);
+				    	songHashTable.insertHandle(values[0]);
 				    	writer.println("|" + values[0] + "| is added to the song database.");
-				    	artistHashTable.insertString(values[1]);
+				    	artistHashTable.insertHandle(values[1]);
 				    	writer.println("|" + values[0] + "| is added to the artist database.");
 				    case remove:
 				    	//implement later
