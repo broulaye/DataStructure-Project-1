@@ -7,8 +7,11 @@ public class MemoryPool {
     // Memory pool array
     private byte[] pool;
 
-    // Freeblock list
+    // Free block list
     private FreeBlockList freeBlockList;
+
+    // block size
+    private int blockSize;
 
     /**
      * Constructor
@@ -16,19 +19,23 @@ public class MemoryPool {
      * @param poolSize initial size
      */
     public MemoryPool(int poolSize) {
+        blockSize = poolSize;
         freeBlockList = new FreeBlockList(poolSize);
         pool = new byte[poolSize];
     }
 
     /**
+     * Store bytes of given length
      * @param bytes   content in bytes
      * @param length1 required lenght
+     * @return position where bytes was stored
      */
-    public void put(byte[] bytes, int length1) {
+    public int put(byte[] bytes, int length1) {
         int length = length1 + 2;
         int whereToStore = freeBlockList.getNextAvailable(length);
-        if (length > pool.length || whereToStore == -1) {
-            int newSize = pool.length + length;
+        // keep expanding until there is enough free space
+        while (length > pool.length || whereToStore == -1) {
+            int newSize = pool.length + this.blockSize;
             freeBlockList.expand(length, pool.length);
             pool = Helper.resizeArray(pool, newSize);
             System.out.println("Memory pool expanded to be " + pool.length + " bytes.");
@@ -43,10 +50,31 @@ public class MemoryPool {
             pool[i] = bytes[j];
             j++;
         }
-
-
+        return whereToStore;
     }
 
+    /**
+     * get string stored at given location
+     * @param location start position of string
+     * @return string from memory pool
+     */
+    public String getStringAt(int location) {
+        int length = (pool[location] << 8) + pool[location + 1];
+        StringBuilder builder = new StringBuilder();
+        for(int i = location + 2; i <= length + location + 1; i++) {
+            builder.append(Character.toString((char)pool[i]));
+        }
+        return builder.toString();
+    }
+
+    /**
+     * Removes string at given location
+     * @param location location of string
+     */
+    public void removeStringAt(int location) {
+        int length = (pool[location] << 8) + pool[location + 1];
+        freeBlockList.freeUpSpace(location, length + 2);
+    }
     /**
      * Print content of memory pool
      */
@@ -54,6 +82,7 @@ public class MemoryPool {
         for (byte element : pool) {
             System.out.print((char) element);
         }
+        System.out.print("\n");
     }
 
     /**

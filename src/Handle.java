@@ -22,7 +22,7 @@ public class Handle {
     }
     
     /**
-     * Default that set the field 
+     * Default Constructor that set the field
      * to a default value
      */
     public Handle() {

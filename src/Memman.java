@@ -1,12 +1,14 @@
 /**
- * {Project Description Here}
+ * Implementation of a song and artist storage system using a
+ * memory manager
  */
 
 /**
  * The class containing the main method.
  *
- * @author {Your Name Here}
- * @version {Put Something Here}
+ * @author Cheick Berthe
+ * @author Broulaye Doumbia
+ * @version 9/6/2016
  */
 
 // On my honor:
@@ -29,13 +31,46 @@
 // during the discussion. I have violated neither the spirit nor
 // letter of this restriction.
 
+/**
+ * Main class: entry point
+ */
 public class Memman {
     /**
      * @param args
      *     Command line parameters
      */
     public static void main(String[] args) {
-    
+        int HashSize = -1;
+        int BlockSize = -1;
+        String fileName = "|";
+        if (args == null || args.length < 3) {
+            System.out.println("Usage: Memman {initial-hash-size} {block-size} {command-file}");
+            return;
+        }
+        for (int i = 0; i < 3; i++) {
+            switch (i) {
+                case 0:
+                    HashSize = Integer.parseInt(args[i]);
+                    break;
+                case 1:
+                    BlockSize = Integer.parseInt(args[i]);
+                    break;
+                case 2:
+                    fileName = args[i];
+                    break;
+            }
+
+        }
+        try {
+            // parse and store list of commands
+            Commands listOfCommands = Parser.parse(fileName);
+            // initialize processor
+            Processor processor = new Processor(HashSize, BlockSize, listOfCommands);
+            // process commands
+            processor.process();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     
 }

@@ -17,15 +17,6 @@ public class Command {
     private String[] values;
 
     /**
-     * Default constructor that every fields to defaults values
-     */
-    public Command() {
-        op = null;
-        typ = null;
-        values = null;
-    }
-
-    /**
      * Constructor that set the field to provided values
      * 
      * @param op
@@ -39,6 +30,13 @@ public class Command {
         this.op = op;
         this.typ = typ;
         this.values = values;
+    }
+
+    /**
+     * Default constructor
+     */
+    public Command() {
+
     }
 
     /**

@@ -15,24 +15,28 @@ public class Processor {
 	private Commands commands;
 	private Hash songHashTable;
 	private Hash artistHashTable;
+	private MemManager memoryManager;
 	
 	/**
-	 * Constructor that set up the fields to
-	 * provided variables
-	 * @param commands represent new commands
-	 * @param hashTable represent new hash table
+	 * Constructor
 	 */
-	public Processor(Commands commands, Hash songHashTable, Hash artistHashTable) {
-		this.commands = commands;
-		this.songHashTable = songHashTable;
-		this.artistHashTable = artistHashTable;
+	public Processor(int hashSize, int BlockSize, Commands commandList) throws Exception {
+		this.commands = commandList;
+        memoryManager = new MemManager(BlockSize);
+		this.songHashTable = new Hash(hashSize, memoryManager);
+		this.artistHashTable = new Hash(hashSize, memoryManager);
+
 	}
-	
+
+    /**
+     *
+     * @throws Exception
+     */
 	public void process() throws Exception {
 		try {
 			PrintWriter writer = new PrintWriter("output.txt", "UTF-8");
 			LinkedList<Command> list = commands.getCommandList();
-			Command command = new Command();
+			Command command;
 			String[] values;
 			for(int i = 0; i < list.size(); i++) {
 				command = list.get(i);

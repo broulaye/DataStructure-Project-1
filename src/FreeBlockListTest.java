@@ -61,4 +61,12 @@ public class FreeBlockListTest extends TestCase{
         assertEquals(6, list.getNextAvailable(3));
         list.printBlocks();
     }
+
+    /**
+     * Make free space
+     */
+    public void testFreeSpace() {
+        list.getNextAvailable(6);
+        list.freeUpSpace(5,10);
+    }
 }

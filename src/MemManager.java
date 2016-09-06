@@ -1,5 +1,3 @@
-import javafx.util.Pair;
-
 /**
  * @author Cheick Berthe
  * @author Broulaye Doumbia
@@ -9,13 +7,13 @@ public class MemManager {
 
     // memory pool
     MemoryPool memoryPool;
+
     /**
      * constructor
-     * @param poolsize size of memory pool in bytes
+     * @param poolSize size of memory pool in bytes
      */
-    public MemManager(int poolsize) {
-
-        memoryPool = new MemoryPool(poolsize);
+    public MemManager(int poolSize) {
+        memoryPool = new MemoryPool(poolSize);
     }
 
 
@@ -25,8 +23,8 @@ public class MemManager {
      * @return handle for str
      */
     public Handle insert(String str) {
-        memoryPool.put(str.getBytes(), str.length());
-        return null;
+        int position = memoryPool.put(str.getBytes(), str.length());
+        return new Handle(position);
     }
 
     /**
@@ -35,7 +33,7 @@ public class MemManager {
      * @param theHandle handle referring to position
      */
     public void remove(Handle theHandle) {
-        // TODO:
+        memoryPool.removeStringAt(theHandle.getLocation());
     }
 
     /**
@@ -63,6 +61,6 @@ public class MemManager {
      */
     public String get(Handle theHandle) {
 
-        return null;
+        return memoryPool.getStringAt(theHandle.getLocation());
     }
 }

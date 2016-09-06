@@ -17,11 +17,11 @@ public class Parser {
 
     /**
      * parse the file name fileN
-     * 
+     *
      * @param fileN
      *            name of the file to be parsed
      */
-    public static void parse(String fileN) {
+    public static Commands parse(String fileN) {
 
         // create new file using the given file name
         File file = new File(fileN);
@@ -122,12 +122,12 @@ public class Parser {
             }
 
             reader.close();
-
         } 
         catch (IOException exception) {
             exception.printStackTrace();
         }
 
+        return commandsList;
     }
 
 }

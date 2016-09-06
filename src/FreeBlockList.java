@@ -77,4 +77,13 @@ public class FreeBlockList extends DLLinkedList<Helper.Tuple> {
         // no available
         return -1;
     }
+
+    /**
+     * Adds new free space block
+     * @param location start of block
+     * @param length length of block
+     */
+    public void freeUpSpace(int location, int length) {
+        add(new Helper.Tuple(location, location + length - 1));
+    }
 }
