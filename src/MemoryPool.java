@@ -3,40 +3,48 @@
  * Created by berth on 9/6/2016.
  */
 public class MemoryPool {
+
+    // Memory pool array
     private byte[] pool;
+
     // Freeblock list
     private FreeBlockList freeBlockList;
-    public MemoryPool(int poolsize) {
-        freeBlockList = new FreeBlockList(poolsize);
-        pool = new byte[poolsize];
+
+    /**
+     * Constructor
+     *
+     * @param poolSize initial size
+     */
+    public MemoryPool(int poolSize) {
+        freeBlockList = new FreeBlockList(poolSize);
+        pool = new byte[poolSize];
     }
 
     /**
-     * @param bytes
-     * @param length
+     * @param bytes   content in bytes
+     * @param length1 required lenght
      */
-    public void put(byte[] bytes, int length) {
-
+    public void put(byte[] bytes, int length1) {
+        int length = length1 + 2;
         int whereToStore = freeBlockList.getNextAvailable(length);
         if (length > pool.length || whereToStore == -1) {
             int newSize = pool.length + length;
             freeBlockList.expand(length, pool.length);
             pool = Helper.resizeArray(pool, newSize);
             System.out.println("Memory pool expanded to be " + pool.length + " bytes.");
-            int j = 0;
-            for (int i = freeBlockList.getNextAvailable(length) ; i < length ; i++) {
-                pool[i] = bytes[j];
-                j++;
-            }
+            whereToStore = freeBlockList.getNextAvailable(length);
         }
-        else {
-            // copy byte into memory pool
-            int j = 0;
-            for (int i = whereToStore; i < length; i++) {
-                pool[i] = bytes[j];
-                j++;
-            }
+        // copy size to pool as 2 byte number
+        pool[whereToStore] = (byte) ((length1 >> 8) & 0xFF);
+        pool[whereToStore + 1] = (byte) (length1 & 0xFF);
+        // copy byte into memory pool
+        int j = 0;
+        for (int i = whereToStore + 2; i < length; i++) {
+            pool[i] = bytes[j];
+            j++;
         }
+
+
     }
 
     /**
@@ -50,6 +58,7 @@ public class MemoryPool {
 
     /**
      * Get number of free blocks in list
+     *
      * @return number of free blocks
      */
     public int numbOfFreeBlocks() {
@@ -57,12 +66,15 @@ public class MemoryPool {
     }
 
     /**
-     * @return
+     * @return size of memory pool
      */
     public int getSize() {
         return pool.length;
     }
 
+    /**
+     * print free block list
+     */
     public void printFreeBlocks() {
         freeBlockList.printBlocks();
     }
