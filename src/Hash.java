@@ -120,4 +120,12 @@ public class Hash {
 
         return (int) (Math.abs(sum) % m);
     }
+    
+    /**
+     * get the number of elements
+     * @return the number of elements
+     */
+    public int getElement() {
+    	return numbElements;
+    }
 }
