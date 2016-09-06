@@ -6,23 +6,13 @@
 public class MemManager {
     // Freeblock list
     private DLLinkedList<byte> freeBlockList;
-    // Artist Hash Table
-    private Hash artistTable;
-    // Song Hash Table
-    private Hash songTable;
+
     /**
      * constructor
      * @param poolsize size of memory pool in bytes
      */
     public MemManager(int poolsize) {
         freeBlockList = new DLLinkedList<>();
-        try {
-            artistTable = new Hash(poolsize);
-            songTable = new Hash(poolsize);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
 

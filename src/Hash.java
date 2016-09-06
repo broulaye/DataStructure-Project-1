@@ -22,8 +22,11 @@ public class Hash {
         }
         valueArray = new String[initialSize];
         numbElements = 0;
+        manager = new MemManager(initialSize);
     }
-
+    String handle2String(Handle theHandle) {
+        return this.manager.get(theHandle);
+    }
     /**
      * 
      * @param arr
@@ -44,9 +47,12 @@ public class Hash {
 
     // Array of strings
     private String[] valueArray;
+
     // number of elements in table
     private int numbElements;
 
+    // memory manager
+    private MemManager manager;
     /**
      * 
      * @param str
@@ -55,7 +61,7 @@ public class Hash {
      * @throws Exception
      *             when all possible slots have been proved and are occupied
      */
-    public int insertString(String str) throws Exception {
+    public boolean insertString(String str) throws Exception {
         int index = hash(str, valueArray.length);
         int pos = index;
         int i = 0;

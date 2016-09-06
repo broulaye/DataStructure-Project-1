@@ -91,7 +91,7 @@ public class HashTest extends TestCase {
     /**
      * TestgetElement
      */
-    public void testgetElemet() {
+    public void testgetElement() {
     	try {
             Hash table = new Hash(3);
             String str = "berthe";
