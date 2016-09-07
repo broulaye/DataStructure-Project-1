@@ -97,18 +97,17 @@ public class FreeBlockList extends DLLinkedList<Helper.Tuple> {
 		}
 		else if (node.getX() < y) {
 			while(get(i).getX() < y || i < size()) {
-				
-				if(node.getY() == x) {
-					add(i+1, new Helper.Tuple(location, location + length - 1));
-	    			merge(i, i+1);
-	    			if(get(i).getY() == get(i+1).getX()) {
-	    				merge(i, i+1);
-	    			}
-				}
-				else {
-					add(i, new Helper.Tuple(location, location + length - 1));
-				}
 				i++;
+			}
+			if(get(i-1).getY() == x) {
+				add(i, new Helper.Tuple(location, location + length - 1));
+    			merge(i-1, i);
+    			if(get(i).getY() == get(i+1).getX()) {
+    				merge(i, i+1);
+    			}
+			}
+			else {
+				add(i, new Helper.Tuple(location, location + length - 1));
 			}
 			
 			
