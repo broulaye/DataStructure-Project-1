@@ -55,13 +55,20 @@ public class Processor {
         }
     }
 
+    /**
+     *
+     * @param type
+     * @param writer
+     */
     private void printContent(Type type, PrintWriter writer) {
         switch (type) {
             case Song:
-                writer.println(songHashTable.printTable());
+                writer.print(songHashTable.printTable());
+                writer.println("total songs: "+ songHashTable.getElement());
                 break;
             case Artist:
-                writer.println(artistHashTable.printTable());
+                writer.print(artistHashTable.printTable());
+                writer.println("total artists: "+ artistHashTable.getElement());
                 break;
             case Block:
                 writer.println(memoryManager.dump());
@@ -78,21 +85,22 @@ public class Processor {
      * @param writer
      */
     private void remove(Type what, String str, PrintWriter writer) {
+        str = str.trim();
         switch (what) {
             case Song:
                 if (songHashTable.removeString(str)) {
-                    // TODO: (Broulaye) what happens if operation if successful
+                    writer.println("|" + str + "| is removed from the song database.");
                 }
                 else {
-                    // TODO: what happens if not
+                    writer.println("|" + str + "| does not exist in the song database.");
                 }
                 break;
             case Artist:
                 if(artistHashTable.removeString(str)) {
-                    // TODO: (Broulaye) what happens if operation if successful
+                    writer.println("|" + str + "| is removed from the artist database.");
                 }
                 else {
-                    // TODO: what happens if not
+                    writer.println("|" + str + "| does not exist in the artist database.");
                 }
                 break;
         }
@@ -106,11 +114,13 @@ public class Processor {
      * @throws Exception
      */
     private void insert(String artist, String song, PrintWriter writer) throws Exception {
-        if (artistHashTable.insertString(artist)) {
+        artist = artist.trim();
+        song = song.trim();
+        if (artistHashTable.insertString(artist, writer)) {
             writer.println("|" + artist + "| is added to the artist database.");
         }
         // TODO: (Broulaye) what to do if insertion fails in case of duplicates
-        if (songHashTable.insertString(song)) {
+        if (songHashTable.insertString(song, writer)) {
             writer.println("|" + song + "| is added to the song database.");
         }
 

@@ -1,3 +1,5 @@
+import java.io.PrintWriter;
+
 /**
  * Hash table class.
  *
@@ -46,7 +48,7 @@ public class Hash {
         int pos = index;
         int i = 0;
         do {
-            if (valueArray[pos] != null && str.equals(manager.get(valueArray[pos]))) {
+            if (valueArray[pos] != null && str.equals(handle2String(valueArray[pos]))) {
                 return pos;
             }
             pos = (pos + ++i * i) % valueArray.length;
@@ -59,7 +61,7 @@ public class Hash {
      * @param theHandle handle associated with returned string
      * @return retrieved string
      */
-    String handle2String(Handle theHandle) {
+    public String handle2String(Handle theHandle) {
 
         return manager.get(theHandle);
     }
@@ -68,11 +70,12 @@ public class Hash {
      * 
      * @param str
      *            (string to insert)
+     * @param writer
      * @return position of insertion
      * @throws Exception
      *             when all possible slots have been proved and are occupied
      */
-    public boolean insertString(String str) throws Exception {
+    public boolean insertString(String str, PrintWriter writer) throws Exception {
         if (get(str) != -1) {
             return false;
         }
@@ -86,7 +89,7 @@ public class Hash {
             }
         }
         // store handle after storing string in memory pool
-        valueArray[pos] = manager.insert(str);
+        valueArray[pos] = manager.insert(str, writer);
         numbElements++;
         if (numbElements >= (valueArray.length >> 1)) {
             valueArray = Helper.resizeArray(valueArray, valueArray.length * 2);
@@ -101,8 +104,9 @@ public class Hash {
         StringBuilder builder = new StringBuilder();
         int pos = 0;
         for (Handle handle : valueArray) {
-            if (handle != null && !handle.isTombStone()) {String dummy = manager.get(handle);
-                builder.append("|").append(manager.get(handle)).append("|").append(pos).append("\n");
+            if (handle != null && !handle.isTombStone()) {
+                builder.append("|").append(handle2String(handle)).append("| ")
+                        .append(pos).append("\n");
             }
             pos++;
         }
