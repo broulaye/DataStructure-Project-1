@@ -45,7 +45,7 @@ public class HashTest extends TestCase {
             memManager = new MemManager(2);
             myHash = new Hash(2, memManager);
             for (int i = 0; i < 20; i++) {
-                myHash.insertHandle(randomAlphaNumeric(Math.round(6)));
+                myHash.insertString(randomAlphaNumeric(Math.round(6)));
             }
             myHash.printTable();
         } 
@@ -64,7 +64,7 @@ public class HashTest extends TestCase {
         Hash table;
         try {
             table = new Hash(-2, new MemManager(2));
-            table.insertHandle("cheick");
+            table.insertString("cheick");
         } 
         catch (Exception e) {
             assertTrue(e instanceof Exception);
@@ -81,8 +81,8 @@ public class HashTest extends TestCase {
         try {
             Hash table = new Hash(3, manager);
             String str = "berthe";
-            boolean result1 = table.insertHandle(str);
-            boolean result2 = table.insertHandle(str);
+            boolean result1 = table.insertString(str);
+            boolean result2 = table.insertString(str);
             assertTrue(result1);
             assertFalse(result2);
         }
@@ -100,7 +100,7 @@ public class HashTest extends TestCase {
     	try {
             Hash table = new Hash(3, manager);
             String str = "berthe";
-            boolean result = table.insertHandle(str);
+            boolean result = table.insertString(str);
             
             assertEquals(1, table.getElement());
         }

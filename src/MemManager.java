@@ -37,21 +37,10 @@ public class MemManager {
     }
 
     /**
-     * Return the record with given handle up to size
-     * bytes by copying it into space
-     * @param space returned record
-     * @param theHandle handle to be retrieved
-     * @param size size of record to be returned
-     * @return number of bytes copied into space
+     * Dump content of memory pool
      */
-    private int get(byte[] space, Handle theHandle, int size) {
-        // TODO
-        return 0;
-    }
-    private
-    // Dump a printout of the freeblock list
-    void dump() {
-        memoryPool.printFreeBlocks();
+    public String dump() {
+        return memoryPool.printFreeBlocks();
     }
 
     /**

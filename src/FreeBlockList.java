@@ -33,7 +33,7 @@ public class FreeBlockList extends DLLinkedList<Helper.Tuple> {
     /**
      * print content of list
      */
-    public void printBlocks() {
+    public String printBlocks() {
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < size(); i++) {
             builder.append(get(i).toString());
@@ -41,7 +41,7 @@ public class FreeBlockList extends DLLinkedList<Helper.Tuple> {
                 builder.append("->");
             }
         }
-        System.out.println(builder.toString());
+        return builder.toString();
     }
 
     /**

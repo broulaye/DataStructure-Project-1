@@ -104,7 +104,7 @@ public class MemoryPool {
     /**
      * print free block list
      */
-    public void printFreeBlocks() {
-        freeBlockList.printBlocks();
+    public String printFreeBlocks() {
+        return freeBlockList.printBlocks();
     }
 }

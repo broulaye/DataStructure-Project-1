@@ -45,7 +45,7 @@ public class Hash {
      * @throws Exception
      *             when all possible slots have been proved and are occupied
      */
-    public boolean insertHandle(String str) throws Exception {
+    public boolean insertString(String str) throws Exception {
         int index = hash(str, valueArray.length);
         int pos = index;
         int i = 0;
@@ -66,15 +66,17 @@ public class Hash {
     /**
      * print the hash table
      */
-    public void printTable() {
+    public String printTable() {
+        StringBuilder builder = new StringBuilder();
         for (String string : valueArray) {
             if (string != null) {
-                System.out.println(string);
+                builder.append(string);
             } 
             else {
-                System.out.println("**NULL**");
+                builder.append("**NULL**");
             }
         }
+        return builder.toString();
     }
 
     /**
@@ -117,5 +119,10 @@ public class Hash {
      */
     public int getElement() {
     	return numbElements;
+    }
+
+    public boolean removeString(String str) {
+        //TODO:
+        return false;
     }
 }

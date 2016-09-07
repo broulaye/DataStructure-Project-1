@@ -40,8 +40,8 @@ public class Memman {
      *     Command line parameters
      */
     public static void main(String[] args) {
-        int HashSize = -1;
-        int BlockSize = -1;
+        int hashSize = -1;
+        int blockSize = -1;
         String fileName = "|";
         if (args == null || args.length < 3) {
             System.out.println("Usage: Memman {initial-hash-size} {block-size} {command-file}");
@@ -50,27 +50,25 @@ public class Memman {
         for (int i = 0; i < 3; i++) {
             switch (i) {
                 case 0:
-                    HashSize = Integer.parseInt(args[i]);
+                    hashSize = Integer.parseInt(args[i]);
                     break;
                 case 1:
-                    BlockSize = Integer.parseInt(args[i]);
+                    blockSize = Integer.parseInt(args[i]);
                     break;
                 case 2:
                     fileName = args[i];
                     break;
             }
-
         }
+
         try {
-            // parse and store list of commands
-            Commands listOfCommands = Parser.parse(fileName);
             // initialize processor
-            Processor processor = new Processor(HashSize, BlockSize, listOfCommands);
+            Processor processor = new Processor(hashSize, blockSize, fileName);
             // process commands
             processor.process();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
+
 }
