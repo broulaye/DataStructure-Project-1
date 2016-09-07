@@ -159,13 +159,32 @@ public class Hash {
      * @param str
      * @return
      */
-    public boolean removeString(String str) {
-        int where = get(str);
-        if (where == -1) {
-            return false;
+
+    public boolean removeString(String str, PrintWriter write) {
+        int index = hash(str, valueArray.length);
+        int pos = index;
+        int i = 0;
+        while (valueArray[pos] != null || valueArray[pos].isTombStone()) {
+            if (!valueArray[pos].isTombStone() && str.equals(manager.get(valueArray[pos]))) {
+                manager.remove(valueArray[pos]);
+                write.println("");
+                return true;
+            }
+            pos = (pos + ++i * i) % valueArray.length;
+            if (pos == index) {
+                return false;
+            }
         }
-        valueArray[where].setTombstone();
-        manager.remove(valueArray[where]);
-        return true;
+        return false;
     }
+
+    public boolean removeString(String str) {
+            int where = get(str);
+            if (where == -1) {
+                return false;
+            }
+            valueArray[where].setTombstone();
+            manager.remove(valueArray[where]);
+            return true;
+        }
 }

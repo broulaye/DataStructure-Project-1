@@ -108,6 +108,9 @@ public class MemoryPool {
      * print free block list
      */
     public String printFreeBlocks() {
+    	if(freeBlockList.isEmpty() && pool.length > 0) {
+    		return "(" + (pool.length-1) + ", " + "0)";
+    	}
         return freeBlockList.printBlocks();
     }
 }
