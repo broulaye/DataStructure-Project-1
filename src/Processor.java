@@ -80,7 +80,7 @@ public class Processor {
     private void remove(Type what, String str, PrintWriter writer) {
         switch (what) {
             case Song:
-                if (songHashTable.removeString(str)) {
+                if (songHashTable.removeString(str, writer)) {
                     // TODO: (Broulaye) what happens if operation if successful
                 }
                 else {
@@ -88,7 +88,7 @@ public class Processor {
                 }
                 break;
             case Artist:
-                if(artistHashTable.removeString(str)) {
+                if(artistHashTable.removeString(str, writer)) {
                     // TODO: (Broulaye) what happens if operation if successful
                 }
                 else {

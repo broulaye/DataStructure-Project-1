@@ -1,3 +1,5 @@
+import java.io.PrintWriter;
+
 /**
  * Hash table class.
  *
@@ -155,10 +157,33 @@ public class Hash {
      * @param str
      * @return
      */
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+    public boolean removeString(String str, PrintWriter write) {
+        int index = hash(str, valueArray.length);
+        int pos = index;
+        int i = 0;
+        while (valueArray[pos] != null || valueArray[pos].isTombStone()) {
+            if (!valueArray[pos].isTombStone() && str.equals(manager.get(valueArray[pos]))) {
+                manager.remove(valueArray[pos]);
+                write.println("");
+                return true;
+            }
+            pos = (pos + ++i * i) % valueArray.length;
+            if (pos == index) {
+                return false;
+            }
+=======
+>>>>>>> Stashed changes
     public boolean removeString(String str) {
         int where = get(str);
         if (where == -1) {
             return false;
+<<<<<<< Updated upstream
+=======
+>>>>>>> fad91d696b26bb8842774b1ade143d83f07c7f94
+>>>>>>> Stashed changes
         }
         valueArray[where].setTombstone();
         manager.remove(valueArray[where]);
