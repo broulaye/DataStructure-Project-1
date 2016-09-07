@@ -56,27 +56,43 @@ public class FreeBlockList extends DLLinkedList<Helper.Tuple> {
             //expand(requiredLength, 0);
             return -1;
         }
+        int min = -1;
+        int at = -1;
+        int currentLength =0;
         for (int i = 0; i < size(); i++) {
             // get size of current node
-            int currentLength = get(i).getY() - get(i).getX() + 1;
-            // check for exact fit
-            if (currentLength == requiredLength) {
-                int startOfFreeBlock = get(i).getX();
-                remove(i);
-                return startOfFreeBlock;
+            currentLength = get(i).getY() - get(i).getX() + 1;
+            int newMin = currentLength - requiredLength;
+            if(newMin >= 0) {
+            	if(min < 0) {
+            		min = newMin;
+            		at = i;
+            	}
+            	else if(newMin < min) {
+            		min = newMin;
+            		at = i;
+            	}
             }
-            if (currentLength > requiredLength) {
-                int remainingSpace = currentLength - requiredLength;
-                int newStart = get(i).getX() + requiredLength;
-                int startOfFreeBlock = get(i).getX();
-                remove(i);
-                Helper.Tuple newFreeBlock = new Helper.Tuple(newStart, newStart + remainingSpace - 1);
-                add(i, newFreeBlock);
-                return startOfFreeBlock;
-            }
+          
         }
-        // no available
-        return -1;
+        if(at < 0) {
+        	return at;
+        }
+        currentLength = get(at).getY() - get(at).getX() + 1;
+        if (currentLength == requiredLength) {
+            int startOfFreeBlock = get(at).getX();
+            remove(at);
+            return startOfFreeBlock;
+        }
+        else {
+            int remainingSpace = currentLength - requiredLength;
+            int newStart = get(at).getX() + requiredLength;
+            int startOfFreeBlock = get(at).getX();
+            remove(at);
+            Helper.Tuple newFreeBlock = new Helper.Tuple(newStart, newStart + remainingSpace - 1);
+            add(at, newFreeBlock);
+            return startOfFreeBlock;
+        }
     }
 
     /**
@@ -87,7 +103,7 @@ public class FreeBlockList extends DLLinkedList<Helper.Tuple> {
     public void freeUpSpace(int location, int length) {
     	Helper.Tuple node;
     	int x = location -1;
-    	int y = x + length;
+    	int y = location + length;
     	int i = 0;
     	node = get(i);
 		//check extremity 1
@@ -96,19 +112,43 @@ public class FreeBlockList extends DLLinkedList<Helper.Tuple> {
 			merge(i, i+1);
 		}
 		else if (node.getX() < y) {
-			while(get(i).getX() < y || i < size()) {
+			while(node.getX() < y) {
 				i++;
+				if(i == size()) {
+					break;
+				}
+				node = get(i);
+				
+				
+				
+			}
+			if(i == size()) {
+				if(get(i-1).getY() == x) {
+					add(i, new Helper.Tuple(location, location + length - 1));
+					
+	    			merge(i-1, i);
+	    			
+	    			return;
+				}
+				else {
+					add(i, new Helper.Tuple(location, location + length - 1));
+					return;
+				}
 			}
 			if(get(i-1).getY() == x) {
 				add(i, new Helper.Tuple(location, location + length - 1));
+				
     			merge(i-1, i);
-    			if(get(i).getY() == get(i+1).getX()) {
-    				merge(i, i+1);
+    			
+    			if((get(i-1).getY() + 1) == get(i).getX()) {
+    				
+    				merge(i-1, i);
+    				
     			}
 			}
 			else {
 				add(i, new Helper.Tuple(location, location + length - 1));
-				if(get(i).getY() == get(i+1).getX()) {
+				if(get(i).getY() + 1 == get(i+1).getX()) {
     				merge(i, i+1);
     			}
 			}
