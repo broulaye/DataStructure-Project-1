@@ -50,10 +50,11 @@ public class FreeBlockList extends DLLinkedList<Helper.Tuple> {
      * @return
      */
     public int getNextAvailable(int requiredLength) {
+    	//TODO: optimized next available algorithm
         // check if list is empty
         if (size() == 0) {
-            expand(requiredLength, 0);
-            return 0;
+            //expand(requiredLength, 0);
+            return -1;
         }
         for (int i = 0; i < size(); i++) {
             // get size of current node
@@ -84,6 +85,41 @@ public class FreeBlockList extends DLLinkedList<Helper.Tuple> {
      * @param length length of block
      */
     public void freeUpSpace(int location, int length) {
+    	Helper.Tuple node;
+    	int x = location -1;
+    	int y = x + length;
+    	int i = 0;
+    	node = get(i);
+		//check extremity 1
+		if (node.getX() == y) {
+			add(i, new Helper.Tuple(location, location + length - 1));
+			merge(i, i+1);
+		}
+		else if (node.getX() < y) {
+			while(get(i).getX() < y || i < size()) {
+				
+				if(node.getY() == x) {
+					add(i+1, new Helper.Tuple(location, location + length - 1));
+	    			merge(i, i+1);
+	    			if(get(i).getY() == get(i+1).getX()) {
+	    				merge(i, i+1);
+	    			}
+				}
+				else {
+					add(i, new Helper.Tuple(location, location + length - 1));
+				}
+				i++;
+			}
+			
+			
+			
+			}
+			
         add(new Helper.Tuple(location, location + length - 1));
+    }
+    
+    private void merge(int loc1, int loc2) {
+    	get(loc1).setY(get(loc2).getY());
+    	remove(get(loc2));
     }
 }
