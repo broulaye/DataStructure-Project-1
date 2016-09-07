@@ -31,8 +31,8 @@ public class MemoryPoolTest extends TestCase{
         string = word.getBytes();
         pool.put(string, word.length());
         assertEquals(1, pool.numbOfFreeBlocks());
-        assertEquals(24, pool.getSize());
-        pool.printContent();
+        assertEquals(20, pool.getSize());
+        pool.toString();
     }
 
     /**
@@ -41,7 +41,7 @@ public class MemoryPoolTest extends TestCase{
     public void testGet() {
         string = "BroulayeDoumbia".getBytes();
         int where = pool.put(string, 5);
-        pool.printContent();
+        pool.toString();
         System.out.println(pool.getStringAt(where));
     }
 
@@ -52,12 +52,12 @@ public class MemoryPoolTest extends TestCase{
         string = "VirginiaTech".getBytes();
         int at = pool.put(string, 6);
         System.out.println("Before Remove");
-        pool.printContent();
+        pool.toString();
         pool.printFreeBlocks();
         pool.removeStringAt(at);
         System.out.println("\nAfter Remove");
         pool.printFreeBlocks();
-        pool.printContent();
+        pool.toString();
 
     }
 }

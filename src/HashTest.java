@@ -47,7 +47,7 @@ public class HashTest extends TestCase {
             for (int i = 0; i < 20; i++) {
                 myHash.insertString(randomAlphaNumeric(Math.round(6)));
             }
-            myHash.printTable();
+            System.out.print(myHash.printTable());
         } 
         catch (Exception e) {
             assertTrue(e instanceof Exception);
@@ -55,17 +55,17 @@ public class HashTest extends TestCase {
         }
         
     }
-    
+
     /**
      * Test the hash table with negative size
      */
     public void testNegativeSize() {
-        
+
         Hash table;
         try {
             table = new Hash(-2, new MemManager(2));
             table.insertString("cheick");
-        } 
+        }
         catch (Exception e) {
             assertTrue(e instanceof Exception);
             e.printStackTrace();

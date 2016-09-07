@@ -7,7 +7,8 @@
  */
 
 public class Hash {
-
+    // initial size
+    private int initialSize;
     // Array of strings
     private Handle[] valueArray;
 
@@ -29,11 +30,30 @@ public class Hash {
         if (initialSize <= 0) {
             throw new Exception("WARN: invalid size type");
         }
+        this.initialSize = initialSize;
         valueArray = new Handle[initialSize];
         numbElements = 0;
         manager = memManager;
     }
 
+    /**
+     *
+     * @param str
+     * @return
+     */
+    public int get(String str) {
+        int index = hash(str, initialSize);
+        int pos = index;
+        int i = 0;
+        do {
+            if (valueArray[pos] != null && str.equals(manager.get(valueArray[pos]))) {
+                return pos;
+            }
+            pos = (pos + ++i * i) % valueArray.length;
+        }
+        while (pos != index);
+        return -1;
+    }
     /**
      * get string for given handle
      * @param theHandle handle associated with returned string
@@ -53,16 +73,13 @@ public class Hash {
      *             when all possible slots have been proved and are occupied
      */
     public boolean insertString(String str) throws Exception {
-        int index = hash(str, valueArray.length);
+        if (get(str) != -1) {
+            return false;
+        }
+        int index = hash(str, initialSize);
         int pos = index;
         int i = 0;
-        while (valueArray[pos] != null) {
-            if (valueArray[pos].isTombStone()) {
-                break;
-            }
-            if (str.equals(manager.get(valueArray[pos]))) {
-                return false;
-            }
+        while (valueArray[pos] != null && !valueArray[pos].isTombStone()) {
             pos = (pos + ++i * i) % valueArray.length;
             if (pos == index) {
                 throw new Exception("WARN: Cannot insert string");
@@ -84,8 +101,8 @@ public class Hash {
         StringBuilder builder = new StringBuilder();
         int pos = 0;
         for (Handle handle : valueArray) {
-            if (handle != null && !handle.isTombStone()) {
-                builder.append("|").append(manager.get(handle)).append("|").append(pos);
+            if (handle != null && !handle.isTombStone()) {String dummy = manager.get(handle);
+                builder.append("|").append(manager.get(handle)).append("|").append(pos).append("\n");
             }
             pos++;
         }
@@ -139,20 +156,12 @@ public class Hash {
      * @return
      */
     public boolean removeString(String str) {
-        int index = hash(str, valueArray.length);
-        int pos = index;
-        int i = 0;
-        while (valueArray[pos] != null || valueArray[pos].isTombStone()) {
-            if (!valueArray[pos].isTombStone() && str.equals(manager.get(valueArray[pos]))) {
-                manager.remove(valueArray[pos]);
-                return true;
-            }
-            pos = (pos + ++i * i) % valueArray.length;
-            if (pos == index) {
-                return false;
-            }
+        int where = get(str);
+        if (where == -1) {
+            return false;
         }
-        // home slot is null
-        return false;
+        valueArray[where].setTombstone();
+        manager.remove(valueArray[where]);
+        return true;
     }
 }
