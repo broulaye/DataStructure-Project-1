@@ -1,6 +1,8 @@
 
 import student.TestCase;
 
+import java.io.PrintWriter;
+
 // -------------------------------------------------------------------------
 /**
  *  Test the hash function (you should throw this away for your project)
@@ -45,7 +47,8 @@ public class HashTest extends TestCase {
             memManager = new MemManager(2);
             myHash = new Hash(2, memManager);
             for (int i = 0; i < 20; i++) {
-                myHash.insertString(randomAlphaNumeric(Math.round(6)));
+                PrintWriter writer = null;
+                myHash.insertString(randomAlphaNumeric(Math.round(6)), writer);
             }
             System.out.print(myHash.printTable());
         } 
@@ -64,7 +67,8 @@ public class HashTest extends TestCase {
         Hash table;
         try {
             table = new Hash(-2, new MemManager(2));
-            table.insertString("cheick");
+            PrintWriter writer = null;
+            table.insertString("cheick", writer);
         }
         catch (Exception e) {
             assertTrue(e instanceof Exception);
@@ -81,8 +85,9 @@ public class HashTest extends TestCase {
         try {
             Hash table = new Hash(3, manager);
             String str = "berthe";
-            boolean result1 = table.insertString(str);
-            boolean result2 = table.insertString(str);
+            PrintWriter writer = null;
+            boolean result1 = table.insertString(str, writer);
+            boolean result2 = table.insertString(str, writer);
             assertTrue(result1);
             assertFalse(result2);
         }
@@ -100,7 +105,8 @@ public class HashTest extends TestCase {
     	try {
             Hash table = new Hash(3, manager);
             String str = "berthe";
-            boolean result = table.insertString(str);
+            PrintWriter writer = null;
+            boolean result = table.insertString(str, writer);
             
             assertEquals(1, table.getElement());
         }

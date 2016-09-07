@@ -1,5 +1,7 @@
 import student.TestCase;
 
+import java.io.PrintWriter;
+
 /**
  * @author Cheick Berthe
  * @author Broulaye Doumbia
@@ -29,7 +31,8 @@ public class MemoryPoolTest extends TestCase{
     public void testPut() {
         word = "CheickBerthe";
         string = word.getBytes();
-        pool.put(string, word.length());
+        PrintWriter writer = null;
+        pool.put(string, word.length(), writer);
         assertEquals(1, pool.numbOfFreeBlocks());
         assertEquals(20, pool.getSize());
         pool.toString();
@@ -40,7 +43,8 @@ public class MemoryPoolTest extends TestCase{
      */
     public void testGet() {
         string = "BroulayeDoumbia".getBytes();
-        int where = pool.put(string, 5);
+        PrintWriter writer = null;
+        int where = pool.put(string, 5, writer);
         pool.toString();
         System.out.println(pool.getStringAt(where));
     }
@@ -50,7 +54,8 @@ public class MemoryPoolTest extends TestCase{
      */
     public void testRemove() {
         string = "VirginiaTech".getBytes();
-        int at = pool.put(string, 6);
+        PrintWriter writer = null;
+        int at = pool.put(string, 6, writer);
         System.out.println("Before Remove");
         pool.toString();
         pool.printFreeBlocks();

@@ -1,3 +1,5 @@
+import java.io.PrintWriter;
+
 /**
  * @author Cheick Berthe
  * @author Broulaye Doumbia
@@ -20,10 +22,11 @@ public class MemManager {
     /**
      * Insert a record and return its position handle
      * @param str string to be stored
+     * @param writer
      * @return handle for str
      */
-    public Handle insert(String str) {
-        int position = memoryPool.put(str.getBytes(), str.length());
+    public Handle insert(String str, PrintWriter writer) {
+        int position = memoryPool.put(str.getBytes(), str.length(), writer);
         return new Handle(position);
     }
 

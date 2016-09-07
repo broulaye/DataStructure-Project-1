@@ -1,3 +1,4 @@
+import java.io.PrintWriter;
 
 /**
  * Created by berth on 9/6/2016.
@@ -28,9 +29,10 @@ public class MemoryPool {
      * Store bytes of given length
      * @param bytes   content in bytes
      * @param length1 required lenght
+     * @param writer
      * @return position where bytes was stored
      */
-    public int put(byte[] bytes, int length1) {
+    public int put(byte[] bytes, int length1, PrintWriter writer) {
         int length = length1 + 2;
         int whereToStore = freeBlockList.getNextAvailable(length);
         // keep expanding until there is enough free space
@@ -38,7 +40,7 @@ public class MemoryPool {
             int newSize = pool.length + this.blockSize;
             freeBlockList.expand(blockSize, pool.length);
             pool = Helper.resizeArray(pool, newSize);
-            System.out.println("Memory pool expanded to be " + pool.length + " bytes.");
+            writer.println("Memory pool expanded to be " + pool.length + " bytes.");
             whereToStore = freeBlockList.getNextAvailable(length);
         }
         // copy size to pool as 2 byte number

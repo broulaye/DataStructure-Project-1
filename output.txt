@@ -1,0 +1,66 @@
+|When Summer's Through| does not exist in the song database.
+(0,32)
+total songs: 0
+total artists: 0
+|Blind Lemon Jefferson| is added to the artist database.
+Memory pool expanded to be 64 bytes.
+|Long Lonesome Blues| is added to the song database.
+|Ma Rainey| is added to the artist database.
+Memory pool expanded to be 96 bytes.
+|Ma Rainey's Black Bottom| is added to the song database.
+Memory pool expanded to be 128 bytes.
+|Charley Patton| is added to the artist database.
+|Mississippi Boweavil Blues| is added to the song database.
+Memory pool expanded to be 160 bytes.
+|Sleepy John Estes| is added to the artist database.
+Memory pool expanded to be 192 bytes.
+|Street Car Blues| is added to the song database.
+|Bukka White| is added to the artist database.
+Memory pool expanded to be 224 bytes.
+|Fixin' To Die Blues| is added to the song database.
+|Ma Rainey| 7
+|Sleepy John Estes| 10
+|Bukka White| 12
+|Charley Patton| 14
+|Blind Lemon Jefferson| 16
+total artists: 5
+|Street Car Blues| 5
+|Ma Rainey's Black Bottom| 8
+|Long Lonesome Blues| 11
+|Mississippi Boweavil Blues| 14
+|Fixin' To Die Blues| 29
+total songs: 5
+|Guitar Slim| is added to the artist database.
+Memory pool expanded to be 256 bytes.
+|The Things That I Used To Do| is added to the song database.
+|Style Council| does not exist in the artist database.
+|Ma Rainey| is removed from the artist database.
+|Mississippi Boweavil Blues| is removed from the song database.
+|(The Best Part Of) Breakin' Up| does not exist in the song database.
+(239,17)
+|Got The Blues| is added to the song database.
+Memory pool expanded to be 288 bytes.
+|Little Eva| is added to the artist database.
+|The Loco-Motion| is added to the song database.
+|Sleepy John Estes| 10
+|Bukka White| 12
+|Charley Patton| 14
+|Little Eva| 15
+|Blind Lemon Jefferson| 16
+|Guitar Slim| 20
+total artists: 7
+|Street Car Blues| 5
+|Ma Rainey's Black Bottom| 8
+|Long Lonesome Blues| 11
+|Got The Blues| 16
+|The Things That I Used To Do| 20
+|The Loco-Motion| 22
+|Fixin' To Die Blues| 29
+total songs: 8
+Memory pool expanded to be 320 bytes.
+|Jim Reeves| is added to the artist database.
+|Jingle Bells| is added to the song database.
+Memory pool expanded to be 352 bytes.
+|Mongo Santamaria| is added to the artist database.
+|Watermelon Man| is added to the song database.
+(343,9)
