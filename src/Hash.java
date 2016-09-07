@@ -157,9 +157,7 @@ public class Hash {
      * @param str
      * @return
      */
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
+
     public boolean removeString(String str, PrintWriter write) {
         int index = hash(str, valueArray.length);
         int pos = index;
@@ -174,19 +172,17 @@ public class Hash {
             if (pos == index) {
                 return false;
             }
-=======
->>>>>>> Stashed changes
-    public boolean removeString(String str) {
-        int where = get(str);
-        if (where == -1) {
-            return false;
-<<<<<<< Updated upstream
-=======
->>>>>>> fad91d696b26bb8842774b1ade143d83f07c7f94
->>>>>>> Stashed changes
         }
-        valueArray[where].setTombstone();
-        manager.remove(valueArray[where]);
-        return true;
+        return false;
     }
+
+    public boolean removeString(String str) {
+            int where = get(str);
+            if (where == -1) {
+                return false;
+            }
+            valueArray[where].setTombstone();
+            manager.remove(valueArray[where]);
+            return true;
+        }
 }
