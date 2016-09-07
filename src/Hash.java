@@ -8,6 +8,15 @@
 
 public class Hash {
 
+    // Array of strings
+    private Handle[] valueArray;
+
+    // number of elements in table
+    private int numbElements;
+
+    // memory manager
+    private MemManager manager;
+
     /**
      * Create a new Hash object.
      * 
@@ -20,23 +29,21 @@ public class Hash {
         if (initialSize <= 0) {
             throw new Exception("WARN: invalid size type");
         }
-        valueArray = new String[initialSize];
+        valueArray = new Handle[initialSize];
         numbElements = 0;
         manager = memManager;
     }
+
+    /**
+     * get string for given handle
+     * @param theHandle handle associated with returned string
+     * @return retrieved string
+     */
     String handle2String(Handle theHandle) {
 
         return manager.get(theHandle);
     }
 
-    // Array of strings
-    private String[] valueArray;
-
-    // number of elements in table
-    private int numbElements;
-
-    // memory manager
-    private MemManager manager;
     /**
      * 
      * @param str
@@ -50,12 +57,19 @@ public class Hash {
         int pos = index;
         int i = 0;
         while (valueArray[pos] != null) {
+            if (valueArray[pos].isTombStone()) {
+                break;
+            }
+            if (str.equals(manager.get(valueArray[pos]))) {
+                return false;
+            }
             pos = (pos + ++i * i) % valueArray.length;
             if (pos == index) {
                 throw new Exception("WARN: Cannot insert string");
             }
         }
-        valueArray[pos] = str;
+        // store handle after storing string in memory pool
+        valueArray[pos] = manager.insert(str);
         numbElements++;
         if (numbElements >= (valueArray.length >> 1)) {
             valueArray = Helper.resizeArray(valueArray, valueArray.length * 2);
@@ -68,13 +82,12 @@ public class Hash {
      */
     public String printTable() {
         StringBuilder builder = new StringBuilder();
-        for (String string : valueArray) {
-            if (string != null) {
-                builder.append(string);
-            } 
-            else {
-                builder.append("**NULL**");
+        int pos = 0;
+        for (Handle handle : valueArray) {
+            if (handle != null && !handle.isTombStone()) {
+                builder.append("|").append(manager.get(handle)).append("|").append(pos);
             }
+            pos++;
         }
         return builder.toString();
     }
@@ -109,7 +122,6 @@ public class Hash {
             sum += aC * mult;
             mult *= 256;
         }
-
         return (int) (Math.abs(sum) % m);
     }
     
@@ -121,8 +133,26 @@ public class Hash {
     	return numbElements;
     }
 
+    /**
+     *
+     * @param str
+     * @return
+     */
     public boolean removeString(String str) {
-        //TODO:
+        int index = hash(str, valueArray.length);
+        int pos = index;
+        int i = 0;
+        while (valueArray[pos] != null || valueArray[pos].isTombStone()) {
+            if (!valueArray[pos].isTombStone() && str.equals(manager.get(valueArray[pos]))) {
+                manager.remove(valueArray[pos]);
+                return true;
+            }
+            pos = (pos + ++i * i) % valueArray.length;
+            if (pos == index) {
+                return false;
+            }
+        }
+        // home slot is null
         return false;
     }
 }

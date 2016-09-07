@@ -9,9 +9,11 @@
  */
 
 public class Handle {
-    
+    // stores location of associated string
     private int location;
 
+    // defines the state of handle in hash table
+    private boolean active;
     /**
      * Constructor that set up the
      * filed with given values
@@ -19,6 +21,7 @@ public class Handle {
      */
     public Handle(int location) {
         this.location = location;
+        active = true;
     }
     
     /**
@@ -26,6 +29,7 @@ public class Handle {
      * to a default value
      */
     public Handle() {
+        active = false;
         location = 0;
     }
 
@@ -53,7 +57,13 @@ public class Handle {
     public String toString() {
         return "" + location;
     }
-    
-    
+
+    /**
+     * check if handle is tombstone
+     * @return state of handle
+     */
+    public boolean isTombStone() {
+        return active;
+    }
     
 }
