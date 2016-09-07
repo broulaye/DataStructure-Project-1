@@ -4,22 +4,29 @@
 public class Helper {
     /**
      * Resizes
-     *             (array to new size)
-     * @param arr
-     *            (array to be resized)
-     * @param newSize
-     *            (new size)
+     * (array to new size)
+     *
+     * @param arr     (array to be resized)
+     * @param newSize (new size)
      * @return new array
      */
-    public static String[] resizeArray(String[] arr, int newSize) {
-        String[] newArray = new String[newSize];
+    public static Handle[] resizeArray(Handle[] arr, int newSize) {
+        Handle[] newArray = new Handle[newSize];
         for (int it = 0; it < arr.length; it++) {
-            if (arr[it] != null) {
+            if (arr[it] != null && !arr[it].isTombStone()) {
                 newArray[it] = arr[it];
             }
         }
         return newArray;
     }
+
+    /**
+     * Resize byte array
+     *
+     * @param bytes
+     * @param newSize
+     * @return
+     */
     public static byte[] resizeArray(byte[] bytes, int newSize) {
         byte[] newArray = new byte[newSize];
         for (int it = 0; it < bytes.length; it++) {
@@ -27,6 +34,7 @@ public class Helper {
         }
         return newArray;
     }
+
     /**
      * Tuple object holding a pair of integers
      */
@@ -35,7 +43,6 @@ public class Helper {
          * Start position
          */
         private int x;
-
 
 
         /**
@@ -54,13 +61,16 @@ public class Helper {
 
         /**
          * Get the start position
+         *
          * @return first integer
          */
         public int getX() {
             return x;
         }
+
         /**
          * Get the end position
+         *
          * @return End position
          */
         public int getY() {
@@ -69,13 +79,14 @@ public class Helper {
 
         /**
          * Set the End position
+         *
          * @param y
          */
         public void setY(int y) {
             this.y = y;
         }
+
         /**
-         *
          * @return formatted string representing object
          */
         public String toString() {
