@@ -36,7 +36,7 @@ public class MemoryPool {
         // keep expanding until there is enough free space
         while (length > pool.length || whereToStore == -1) {
             int newSize = pool.length + this.blockSize;
-            freeBlockList.expand(length, pool.length);
+            freeBlockList.expand(blockSize, pool.length);
             pool = Helper.resizeArray(pool, newSize);
             System.out.println("Memory pool expanded to be " + pool.length + " bytes.");
             whereToStore = freeBlockList.getNextAvailable(length);
@@ -46,7 +46,7 @@ public class MemoryPool {
         pool[whereToStore + 1] = (byte) (length1 & 0xFF);
         // copy byte into memory pool
         int j = 0;
-        for (int i = whereToStore + 2; i < length; i++) {
+        for (int i = whereToStore + 2; i < whereToStore + length; i++) {
             pool[i] = bytes[j];
             j++;
         }
@@ -78,11 +78,12 @@ public class MemoryPool {
     /**
      * Print content of memory pool
      */
-    public void printContent() {
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
         for (byte element : pool) {
-            System.out.print((char) element);
+            builder.append((char) element);
         }
-        System.out.print("\n");
+        return builder.toString();
     }
 
     /**

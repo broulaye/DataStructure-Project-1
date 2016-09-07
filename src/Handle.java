@@ -13,7 +13,7 @@ public class Handle {
     private int location;
 
     // defines the state of handle in hash table
-    private boolean active;
+    private boolean tombstone;
     /**
      * Constructor that set up the
      * filed with given values
@@ -21,7 +21,7 @@ public class Handle {
      */
     public Handle(int location) {
         this.location = location;
-        active = true;
+        tombstone = false;
     }
     
     /**
@@ -29,7 +29,7 @@ public class Handle {
      * to a default value
      */
     public Handle() {
-        active = false;
+        tombstone = false;
         location = 0;
     }
 
@@ -63,7 +63,13 @@ public class Handle {
      * @return state of handle
      */
     public boolean isTombStone() {
-        return active;
+        return tombstone;
     }
-    
+
+    /**
+     * set the tombstone
+     */
+    public void setTombstone() {
+        tombstone = true;
+    }
 }

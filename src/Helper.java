@@ -13,7 +13,7 @@ public class Helper {
     public static Handle[] resizeArray(Handle[] arr, int newSize) {
         Handle[] newArray = new Handle[newSize];
         for (int it = 0; it < arr.length; it++) {
-            if (arr[it] != null && !arr[it].isTombStone()) {
+            if (arr[it] != null) {
                 newArray[it] = arr[it];
             }
         }
