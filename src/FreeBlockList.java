@@ -108,13 +108,16 @@ public class FreeBlockList extends DLLinkedList<Helper.Tuple> {
 			}
 			else {
 				add(i, new Helper.Tuple(location, location + length - 1));
+				if(get(i).getY() == get(i+1).getX()) {
+    				merge(i, i+1);
+    			}
 			}
 			
 			
 			
 			}
 			
-        add(new Helper.Tuple(location, location + length - 1));
+        //add(new Helper.Tuple(location, location + length - 1));
     }
     
     private void merge(int loc1, int loc2) {
