@@ -23,13 +23,13 @@ public class Processor {
     public Processor(int hashSize, int BlockSize, String fileName) throws Exception {
         this.commands = Parser.parse(fileName);
         memoryManager = new MemManager(BlockSize);
-        this.songHashTable = new Hash(hashSize, memoryManager);
-        this.artistHashTable = new Hash(hashSize, memoryManager);
+        this.songHashTable = new Hash(hashSize, memoryManager, "Song");
+        this.artistHashTable = new Hash(hashSize, memoryManager, "Artist");
 
     }
 
     /**
-     * @throws Exception
+     * @throws Exception various exception from nested calls
      */
     public void process() throws Exception {
         try {
@@ -46,7 +46,6 @@ public class Processor {
                     case print:
                         printContent(command.getTyp(), writer);
                         break;
-
                 }
             }
             writer.close();
@@ -56,19 +55,18 @@ public class Processor {
     }
 
     /**
+     * print content of given type of database
      *
-     * @param type
-     * @param writer
+     * @param type   requested type of database
+     * @param writer used for output
      */
     private void printContent(Type type, PrintWriter writer) {
         switch (type) {
             case Song:
                 writer.print(songHashTable.printTable());
-                writer.println("total songs: "+ songHashTable.getElement());
                 break;
             case Artist:
                 writer.print(artistHashTable.printTable());
-                writer.println("total artists: "+ artistHashTable.getElement());
                 break;
             case Block:
                 writer.println(memoryManager.dump());
@@ -79,10 +77,9 @@ public class Processor {
     }
 
     /**
-     *
-     * @param what
-     * @param str
-     * @param writer
+     * @param what   type to be removed
+     * @param str    string to be removed
+     * @param writer for status report
      */
     private void remove(Type what, String str, PrintWriter writer) {
         str = str.trim();
@@ -90,16 +87,14 @@ public class Processor {
             case Song:
                 if (songHashTable.removeString(str)) {
                     writer.println("|" + str + "| is removed from the song database.");
-                }
-                else {
+                } else {
                     writer.println("|" + str + "| does not exist in the song database.");
                 }
                 break;
             case Artist:
-                if(artistHashTable.removeString(str)) {
+                if (artistHashTable.removeString(str)) {
                     writer.println("|" + str + "| is removed from the artist database.");
-                }
-                else {
+                } else {
                     writer.println("|" + str + "| does not exist in the artist database.");
                 }
                 break;
@@ -107,21 +102,25 @@ public class Processor {
     }
 
     /**
+     * Insert
      *
-     * @param artist
-     * @param song
-     * @param writer
-     * @throws Exception
+     * @param artist artist name
+     * @param song   song title
+     * @param writer used for status output
+     * @throws Exception exception from inner calls
      */
     private void insert(String artist, String song, PrintWriter writer) throws Exception {
         artist = artist.trim();
         song = song.trim();
         if (artistHashTable.insertString(artist, writer)) {
             writer.println("|" + artist + "| is added to the artist database.");
+        } else {
+            writer.println("|" + artist + "| duplicates a record already in the artist database.");
         }
-        // TODO: (Broulaye) what to do if insertion fails in case of duplicates
         if (songHashTable.insertString(song, writer)) {
             writer.println("|" + song + "| is added to the song database.");
+        } else {
+            writer.println("|" + song + "| duplicates a record already in the song database.");
         }
 
 

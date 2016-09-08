@@ -1,6 +1,42 @@
 /**
  * Implementation of a song and artist storage system using a
  * memory manager
+ * <p>
+ * The class containing the main method.
+ *
+ * @author Cheick Berthe
+ * @author Broulaye Doumbia
+ * @version 9/6/2016
+ * <p>
+ * The class containing the main method.
+ * @author Cheick Berthe
+ * @author Broulaye Doumbia
+ * @version 9/6/2016
+ * <p>
+ * The class containing the main method.
+ * @author Cheick Berthe
+ * @author Broulaye Doumbia
+ * @version 9/6/2016
+ * <p>
+ * The class containing the main method.
+ * @author Cheick Berthe
+ * @author Broulaye Doumbia
+ * @version 9/6/2016
+ * <p>
+ * The class containing the main method.
+ * @author Cheick Berthe
+ * @author Broulaye Doumbia
+ * @version 9/6/2016
+ * <p>
+ * The class containing the main method.
+ * @author Cheick Berthe
+ * @author Broulaye Doumbia
+ * @version 9/6/2016
+ * <p>
+ * The class containing the main method.
+ * @author Cheick Berthe
+ * @author Broulaye Doumbia
+ * @version 9/6/2016
  */
 
 /**

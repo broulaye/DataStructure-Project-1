@@ -9,8 +9,10 @@ import java.io.PrintWriter;
  */
 
 public class Hash {
-    // initial size
-    private int initialSize;
+
+    // stores the type of hash table
+    private String type;
+
     // Array of strings
     private Handle[] valueArray;
 
@@ -23,41 +25,42 @@ public class Hash {
     /**
      * Create a new Hash object.
      *
-     * @throws Exception
-     *             thrown when negative size value is passed
-     * @param initialSize
-     *            represent the hash table's initial size
+     * @param initialSize represent the hash table's initial size
+     * @throws Exception thrown when negative size value is passed
      */
-    public Hash(int initialSize, MemManager memManager) throws Exception {
+    public Hash(int initialSize, MemManager memManager, String type) throws Exception {
         if (initialSize <= 0) {
             throw new Exception("WARN: invalid size type");
         }
-        this.initialSize = initialSize;
+        this.type = type;
         valueArray = new Handle[initialSize];
         numbElements = 0;
         manager = memManager;
     }
 
     /**
+     * Finds a string in the database
      *
-     * @param str
-     * @return
+     * @param str string to be retrieved
+     * @return position of retrieved string, -1 if not found
      */
     public int get(String str) {
-        int index = hash(str, initialSize);
+        int index = hash(str, valueArray.length);
         int pos = index;
         int i = 0;
         do {
             if (valueArray[pos] != null && str.equals(handle2String(valueArray[pos]))) {
                 return pos;
             }
-            pos = (pos + ++i * i) % valueArray.length;
+            pos = (index + ++i * i) % valueArray.length;
         }
         while (pos != index);
         return -1;
     }
+
     /**
      * get string for given handle
+     *
      * @param theHandle handle associated with returned string
      * @return retrieved string
      */
@@ -67,34 +70,45 @@ public class Hash {
     }
 
     /**
-     *
-     * @param str
-     *            (string to insert)
-     * @param writer
+     * @param str    (string to insert)
+     * @param writer used to return status of operation
      * @return position of insertion
-     * @throws Exception
-     *             when all possible slots have been proved and are occupied
+     * @throws Exception when all possible slots have been proved and are occupied
      */
     public boolean insertString(String str, PrintWriter writer) throws Exception {
         if (get(str) != -1) {
             return false;
         }
-        int index = hash(str, initialSize);
+        int index = hash(str, valueArray.length);
         int pos = index;
         int i = 0;
         while (valueArray[pos] != null && !valueArray[pos].isTombStone()) {
-            pos = (pos + ++i * i) % valueArray.length;
-            if (pos == index) {
-                throw new Exception("WARN: Cannot insert string");
-            }
+            pos = (index + ++i * i) % valueArray.length;
+        }
+        numbElements++;
+        if (numbElements > (valueArray.length >> 1)) {
+            doubleSize();
+            writer.println(type + " hash table size doubled.");
         }
         // store handle after storing string in memory pool
         valueArray[pos] = manager.insert(str, writer);
-        numbElements++;
-        if (numbElements >= (valueArray.length >> 1)) {
-            valueArray = Helper.resizeArray(valueArray, valueArray.length * 2);
-        }
+
         return true;
+    }
+
+    /**
+     * insert handle in table
+     *
+     * @param handle handle to be inserted
+     */
+    private void insert(Handle handle) {
+        int index = hash(handle2String(handle), valueArray.length);
+        int pos = index;
+        int i = 0;
+        while (valueArray[pos] != null && !valueArray[pos].isTombStone()) {
+            pos = (index + ++i * i) % valueArray.length;
+        }
+        valueArray[pos] = handle;
     }
 
     /**
@@ -110,6 +124,7 @@ public class Hash {
             }
             pos++;
         }
+        builder.append("total ").append(type.toLowerCase()).append("s: ").append(numbElements).append("\n");
         return builder.toString();
     }
 
@@ -117,10 +132,8 @@ public class Hash {
      * Compute the hash function. Uses the "sfold" method from the OpenDSA
      * module on hash functions
      *
-     * @param s
-     *            The string that we are hashing
-     * @param m
-     *            The size of the hash table
+     * @param s The string that we are hashing
+     * @param m The size of the hash table
      * @return The home slot for that string
      */
     // This is private for distributing hash function in a way that will
@@ -148,6 +161,7 @@ public class Hash {
 
     /**
      * get the number of elements
+     *
      * @return the number of elements
      */
     public int getElement() {
@@ -155,9 +169,10 @@ public class Hash {
     }
 
     /**
+     * remove string from table
      *
-     * @param str
-     * @return
+     * @param str string to remove
+     * @return true if operation was successful
      */
     public boolean removeString(String str) {
         int where = get(str);
@@ -166,6 +181,21 @@ public class Hash {
         }
         valueArray[where].setTombstone();
         manager.remove(valueArray[where]);
+        numbElements--;
         return true;
+    }
+
+    /**
+     * doubles the size of table
+     * and rehashes content
+     */
+    private void doubleSize() {
+        Handle[] copy = valueArray.clone();
+        valueArray = new Handle[valueArray.length * 2];
+        for (Handle handle : copy) {
+            if (handle != null && !handle.isTombStone()) {
+                insert(handle);
+            }
+        }
     }
 }

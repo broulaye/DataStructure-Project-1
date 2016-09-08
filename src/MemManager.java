@@ -12,6 +12,7 @@ public class MemManager {
 
     /**
      * constructor
+     *
      * @param poolSize size of memory pool in bytes
      */
     public MemManager(int poolSize) {
@@ -21,8 +22,9 @@ public class MemManager {
 
     /**
      * Insert a record and return its position handle
-     * @param str string to be stored
-     * @param writer
+     *
+     * @param str    string to be stored
+     * @param writer used to return status of operation
      * @return handle for str
      */
     public Handle insert(String str, PrintWriter writer) {
@@ -33,6 +35,7 @@ public class MemManager {
     /**
      * Free a block at position specified by theHandle
      * Merge adjacent blocks
+     *
      * @param theHandle handle referring to position
      */
     public void remove(Handle theHandle) {
@@ -47,9 +50,10 @@ public class MemManager {
     }
 
     /**
+     * get string corresponding to given handle
      *
-     * @param theHandle
-     * @return
+     * @param theHandle handle used for retrieval
+     * @return string from memory pool
      */
     public String get(Handle theHandle) {
 

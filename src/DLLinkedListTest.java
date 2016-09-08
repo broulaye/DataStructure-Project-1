@@ -1,14 +1,14 @@
-
 import student.TestCase;
+
 /**
  * This class the double linked list
+ *
  * @author Broulaye Doumbia
  * @author Cheick Berthe
  * @version 09/05/2016
- *
  */
 public class DLLinkedListTest extends TestCase {
-    
+
     /**
      * the list we will use
      */
@@ -19,7 +19,7 @@ public class DLLinkedListTest extends TestCase {
      */
     @Override
     public void setUp() {
-        list = new DLLinkedList<String>();
+        list = new DLLinkedList<>();
     }
 
     /**
@@ -31,16 +31,14 @@ public class DLLinkedListTest extends TestCase {
         Exception e = null;
         try {
             list.remove(2);
-        } 
-        catch (Exception exception) {
+        } catch (Exception exception) {
             e = exception;
         }
         assertTrue(e instanceof IndexOutOfBoundsException);
         e = null;
         try {
             list.remove(-1);
-        } 
-        catch (Exception exception) {
+        } catch (Exception exception) {
             e = exception;
         }
         assertTrue(e instanceof IndexOutOfBoundsException);
@@ -97,8 +95,7 @@ public class DLLinkedListTest extends TestCase {
         Exception e = null;
         try {
             list.add(null);
-        } 
-        catch (Exception exception) {
+        } catch (Exception exception) {
             e = exception;
         }
         assertTrue(e instanceof IllegalArgumentException);
@@ -112,8 +109,7 @@ public class DLLinkedListTest extends TestCase {
         Exception e = null;
         try {
             list.add(0, null);
-        } 
-        catch (Exception exception) {
+        } catch (Exception exception) {
             e = exception;
         }
         assertTrue(e instanceof IllegalArgumentException);
@@ -128,19 +124,17 @@ public class DLLinkedListTest extends TestCase {
         Exception e = null;
         try {
             list.add(2, "B");
-        } 
-        catch (Exception exception) {
+        } catch (Exception exception) {
             e = exception;
         }
         assertTrue(e instanceof IndexOutOfBoundsException);
         e = null;
         try {
             list.add(-1, "B");
-        } 
-        catch (Exception exception) {
+        } catch (Exception exception) {
             e = exception;
         }
-        assertTrue( e instanceof IndexOutOfBoundsException);
+        assertTrue(e instanceof IndexOutOfBoundsException);
     }
 
     /**
@@ -151,9 +145,9 @@ public class DLLinkedListTest extends TestCase {
         assertFalse(list.remove(null));
         list.add("A");
         list.add("B");
-        assertTrue( list.remove("A"));
-        assertEquals( "B", list.get(0));
-        assertEquals( 1, list.size());
+        assertTrue(list.remove("A"));
+        assertEquals("B", list.get(0));
+        assertEquals(1, list.size());
         list.add("C");
         assertTrue(list.remove("C"));
         assertEquals("B", list.get(0));
@@ -167,8 +161,7 @@ public class DLLinkedListTest extends TestCase {
         Exception exception = null;
         try {
             list.get(-1);
-        } 
-        catch (Exception e) {
+        } catch (Exception e) {
             exception = e;
         }
         assertTrue(exception instanceof IndexOutOfBoundsException);
@@ -176,8 +169,7 @@ public class DLLinkedListTest extends TestCase {
         list.add("A");
         try {
             list.get(1);
-        } 
-        catch (IndexOutOfBoundsException e) {
+        } catch (IndexOutOfBoundsException e) {
             exception = e;
         }
         assertTrue(exception instanceof IndexOutOfBoundsException);
@@ -197,17 +189,17 @@ public class DLLinkedListTest extends TestCase {
         list.add("G");
         list.add("H");
         list.add("I");
-        
+
         assertEquals(list.get(7), "H");
         assertEquals(list.get(1), "B");
     }
-    
+
 
     /**
      * Tests isEmpty when empty and full
      */
     public void testIsEmpty() {
-        assertTrue( list.isEmpty());
+        assertTrue(list.isEmpty());
         list.add("A");
         assertFalse(list.isEmpty());
     }
@@ -247,22 +239,20 @@ public class DLLinkedListTest extends TestCase {
         exception = null;
         try {
             list.remove(0);
-        } 
-        catch (IndexOutOfBoundsException e) {
+        } catch (IndexOutOfBoundsException e) {
             exception = e;
         }
-        assertTrue(  exception instanceof IndexOutOfBoundsException);
+        assertTrue(exception instanceof IndexOutOfBoundsException);
 
-        DLLinkedList<String> emptyList = new DLLinkedList<String>();
+        DLLinkedList<String> emptyList = new DLLinkedList<>();
         exception = null;
         try {
             emptyList.remove(0);
-        } 
-        catch (IndexOutOfBoundsException e) {
+        } catch (IndexOutOfBoundsException e) {
             exception = e;
         }
-        assertTrue( exception instanceof IndexOutOfBoundsException);
+        assertTrue(exception instanceof IndexOutOfBoundsException);
     }
-    
-    
+
+
 }

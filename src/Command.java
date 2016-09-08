@@ -4,11 +4,10 @@
  * insert command, also has a type that specify if the command is being run on a
  * song, artist, or block. finaly each command also as a value that present the
  * argument of the command
- * 
+ *
  * @author Broulaye Doumbia
  * @author Cheick Berthe
  * @version 09/04/2016
- *
  */
 public class Command {
 
@@ -18,13 +17,10 @@ public class Command {
 
     /**
      * Constructor that set the field to provided values
-     * 
-     * @param op
-     *            represent operation
-     * @param typ
-     *            represent type
-     * @param values
-     *            represent values
+     *
+     * @param op     represent operation
+     * @param typ    represent type
+     * @param values represent values
      */
     public Command(Operation op, Type typ, String[] values) {
         this.op = op;
@@ -41,7 +37,7 @@ public class Command {
 
     /**
      * Get the operation of the command
-     * 
+     *
      * @return the command operation
      */
     public Operation getOp() {
@@ -50,9 +46,8 @@ public class Command {
 
     /**
      * Set the operation of the command
-     * 
-     * @param op
-     *            value the operation is going to be set to
+     *
+     * @param op value the operation is going to be set to
      */
     public void setOp(Operation op) {
         this.op = op;
@@ -60,7 +55,7 @@ public class Command {
 
     /**
      * Get the type of the command
-     * 
+     *
      * @return the command type
      */
     public Type getTyp() {
@@ -69,9 +64,8 @@ public class Command {
 
     /**
      * Set the type of the command
-     * 
-     * @param typ
-     *            value the type is going to be set to
+     *
+     * @param typ value the type is going to be set to
      */
     public void setTyp(Type typ) {
         this.typ = typ;
@@ -79,7 +73,7 @@ public class Command {
 
     /**
      * get the values of the command
-     * 
+     *
      * @return the values of the command
      */
     public String[] getValues() {
@@ -88,9 +82,8 @@ public class Command {
 
     /**
      * Set the values of the command
-     * 
-     * @param values
-     *            value the values is going to be set to
+     *
+     * @param values value the values is going to be set to
      */
     public void setValues(String[] values) {
         this.values = values;
@@ -98,7 +91,7 @@ public class Command {
 
     /**
      * get a string representaion of the command
-     * 
+     *
      * @return a string representation of the command
      */
     @Override

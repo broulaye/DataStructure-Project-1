@@ -10,7 +10,6 @@ import java.util.Scanner;
  * @author Broulaye Doumbia
  * @author Cheick Berthe
  * @version 09/04/2016
- * 
  */
 
 public class Parser {
@@ -18,8 +17,7 @@ public class Parser {
     /**
      * parse the file name fileN
      *
-     * @param fileN
-     *            name of the file to be parsed
+     * @param fileN name of the file to be parsed
      */
     public static Commands parse(String fileN) {
 
@@ -27,7 +25,7 @@ public class Parser {
         File file = new File(fileN);
 
         // create a scanner object
-        Scanner reader = null;
+        Scanner reader;
 
         // create a new Commands object
         Commands commandsList = new Commands();
@@ -35,7 +33,7 @@ public class Parser {
         try {
             reader = new Scanner(file);
 
-            String token = "";
+            String token;
 
             // while the file got for line execute the following commands
             while (reader.hasNextLine()) {
@@ -47,8 +45,6 @@ public class Parser {
                 String s = "";
 
                 String[] value = new String[2];
-
-                System.out.println(token);
 
                 String[] line = token.split(" ");
 
@@ -69,14 +65,10 @@ public class Parser {
 
                         if (line[1].equals("song")) {
                             command.setTyp(Type.Song);
-                        }
-
-                        else if (line[1].equals("artist")) {
+                        } else if (line[1].equals("artist")) {
                             command.setTyp(Type.Artist);
-                        }
-
-                        else {
-                            System.out.println("Illegal type");
+                        } else {
+                            System.out.println("Illegal type: " + line[1]);
                         }
 
                         for (int i = 2; i < line.length; i++) {
@@ -92,15 +84,12 @@ public class Parser {
 
                         if (line[1].equals("song")) {
                             command.setTyp(Type.Song);
-                        } 
-                        else if (line[1].equals("artist")) {
+                        } else if (line[1].equals("artist")) {
                             command.setTyp(Type.Artist);
-                        } 
-                        else if (line[1].equals("blocks")) {
+                        } else if (line[1].equals("blocks")) {
                             command.setTyp(Type.Block);
-                        } 
-                        else {
-                            System.out.println("Illegal type");
+                        } else {
+                            System.out.println("Illegal type: " + line[1]);
                         }
 
                         for (int i = 2; i < line.length; i++) {
@@ -112,7 +101,7 @@ public class Parser {
 
                         break;
                     default:
-                        System.out.println("Illegal Operation");
+                        System.out.println("Unrecognized Command");
                         break;
 
                 }
@@ -122,8 +111,7 @@ public class Parser {
             }
 
             reader.close();
-        } 
-        catch (IOException exception) {
+        } catch (IOException exception) {
             exception.printStackTrace();
         }
 

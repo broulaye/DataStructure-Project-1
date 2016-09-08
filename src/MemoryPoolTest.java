@@ -1,37 +1,44 @@
 import student.TestCase;
 
+import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 
 /**
+ * tests for free block list
+ *
  * @author Cheick Berthe
  * @author Broulaye Doumbia
  * @version 9/6/2016.
  */
-
-/**
- * tests for free block list
- */
-public class MemoryPoolTest extends TestCase{
+public class MemoryPoolTest extends TestCase {
     /**
      * memory pool used in tests
      */
     private MemoryPool pool;
     byte[] string;
     String word;
+    PrintWriter writer = null;
+
     /**
      * initialize member variables
      */
     public void setUp() {
-        word = new String();
+        word = "";
         pool = new MemoryPool(10);
+        try {
+            writer = new PrintWriter("memoryPoolTest.txt", "UTF-8");
+        } catch (FileNotFoundException | UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
     }
+
     /**
      * Insert then print free blocks
      */
     public void testPut() {
         word = "CheickBerthe";
         string = word.getBytes();
-        PrintWriter writer = null;
         pool.put(string, word.length(), writer);
         assertEquals(1, pool.numbOfFreeBlocks());
         assertEquals(20, pool.getSize());
@@ -43,7 +50,6 @@ public class MemoryPoolTest extends TestCase{
      */
     public void testGet() {
         string = "BroulayeDoumbia".getBytes();
-        PrintWriter writer = null;
         int where = pool.put(string, 5, writer);
         pool.toString();
         System.out.println(pool.getStringAt(where));
@@ -54,7 +60,7 @@ public class MemoryPoolTest extends TestCase{
      */
     public void testRemove() {
         string = "VirginiaTech".getBytes();
-        PrintWriter writer = null;
+
         int at = pool.put(string, 6, writer);
         System.out.println("Before Remove");
         pool.toString();
