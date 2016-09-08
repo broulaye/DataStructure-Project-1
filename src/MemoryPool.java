@@ -112,6 +112,7 @@ public class MemoryPool {
 
     /**
      * print free block list
+     * @return a string representation of the blocks
      */
     public String printFreeBlocks() {
         if (freeBlockList.isEmpty() && pool.length > 0) {

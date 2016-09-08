@@ -1,45 +1,6 @@
 /**
  * Implementation of a song and artist storage system using a
  * memory manager
- * <p>
- * The class containing the main method.
- *
- * @author Cheick Berthe
- * @author Broulaye Doumbia
- * @version 9/6/2016
- * <p>
- * The class containing the main method.
- * @author Cheick Berthe
- * @author Broulaye Doumbia
- * @version 9/6/2016
- * <p>
- * The class containing the main method.
- * @author Cheick Berthe
- * @author Broulaye Doumbia
- * @version 9/6/2016
- * <p>
- * The class containing the main method.
- * @author Cheick Berthe
- * @author Broulaye Doumbia
- * @version 9/6/2016
- * <p>
- * The class containing the main method.
- * @author Cheick Berthe
- * @author Broulaye Doumbia
- * @version 9/6/2016
- * <p>
- * The class containing the main method.
- * @author Cheick Berthe
- * @author Broulaye Doumbia
- * @version 9/6/2016
- * <p>
- * The class containing the main method.
- * @author Cheick Berthe
- * @author Broulaye Doumbia
- * @version 9/6/2016
- */
-
-/**
  * The class containing the main method.
  *
  * @author Cheick Berthe
@@ -71,40 +32,41 @@
  * Main class: entry point
  */
 public class Memman {
-    /**
-     * @param args
-     *     Command line parameters
-     */
-    public static void main(String[] args) {
-        int hashSize = -1;
-        int blockSize = -1;
-        String fileName = "|";
-        if (args == null || args.length < 3) {
-            System.out.println("Usage: Memman {initial-hash-size} {block-size} {command-file}");
-            return;
-        }
-        for (int i = 0; i < 3; i++) {
-            switch (i) {
-                case 0:
-                    hashSize = Integer.parseInt(args[i]);
-                    break;
-                case 1:
-                    blockSize = Integer.parseInt(args[i]);
-                    break;
-                case 2:
-                    fileName = args[i];
-                    break;
-            }
-        }
+	/**
+	 * @param args
+	 *            Command line parameters
+	 */
+	public static void main(String[] args) {
+		int hashSize = -1;
+		int blockSize = -1;
+		String fileName = "|";
+		if (args == null || args.length < 3) {
+			System.out.println("Usage: Memman {initial-hash-size} {block-size} {command-file}");
+			return;
+		}
+		for (int i = 0; i < 3; i++) {
+			switch (i) {
+			case 0:
+				hashSize = Integer.parseInt(args[i]);
+				break;
+			case 1:
+				blockSize = Integer.parseInt(args[i]);
+				break;
+			case 2:
+				fileName = args[i];
+				break;
+			}
+		}
 
-        try {
-            // initialize processor
-            Processor processor = new Processor(hashSize, blockSize, fileName);
-            // process commands
-            processor.process();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+		try {
+			// initialize processor
+			Processor processor = new Processor(hashSize, blockSize, fileName);
+			// process commands
+			processor.process();
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 }
