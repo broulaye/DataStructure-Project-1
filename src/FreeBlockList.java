@@ -47,7 +47,7 @@ public class FreeBlockList extends DLLinkedList<Block> {
         for (int i = 0; i < size(); i++) {
             builder.append(get(i).toString());
             if (i < size() - 1) {
-                builder.append("->");
+                builder.append(" -> ");
             }
         }
         return builder.toString();

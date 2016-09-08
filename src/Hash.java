@@ -79,6 +79,10 @@ public class Hash {
         if (get(str) != -1) {
             return false;
         }
+        if (numbElements + 1 > (valueArray.length >> 1)) {
+            doubleSize();
+            writer.println(type + " hash table size doubled.");
+        }
         int index = hash(str, valueArray.length);
         int pos = index;
         int i = 0;
@@ -86,13 +90,8 @@ public class Hash {
             pos = (index + ++i * i) % valueArray.length;
         }
         numbElements++;
-        if (numbElements > (valueArray.length >> 1)) {
-            doubleSize();
-            writer.println(type + " hash table size doubled.");
-        }
         // store handle after storing string in memory pool
         valueArray[pos] = manager.insert(str, writer);
-
         return true;
     }
 

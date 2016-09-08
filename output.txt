@@ -39,25 +39,25 @@ Memory pool expanded to be 256 bytes.
 |Ma Rainey| is removed from the artist database.
 |Mississippi Boweavil Blues| is removed from the song database.
 |(The Best Part Of) Breakin' Up| does not exist in the song database.
-(44,11)->(97,28)->(239,17)
+(44,11) -> (97,28) -> (239,17)
 |Blind Lemon Jefferson| duplicates a record already in the artist database.
 |Got The Blues| is added to the song database.
 |Little Eva| is added to the artist database.
 Memory pool expanded to be 288 bytes.
 |The Loco-Motion| is added to the song database.
 |Blind Lemon Jefferson| 0
-|Guitar Slim| 2
 |Bukka White| 4
 |Sleepy John Estes| 10
+|Guitar Slim| 12
 |Charley Patton| 14
 |Little Eva| 18
 total artists: 6
 |Fixin' To Die Blues| 1
 |Street Car Blues| 5
-|The Things That I Used To Do| 7
 |Got The Blues| 8
 |Long Lonesome Blues| 15
 |Ma Rainey's Black Bottom| 16
+|The Things That I Used To Do| 17
 |The Loco-Motion| 18
 total songs: 7
 |Jim Reeves| is added to the artist database.
@@ -65,4 +65,4 @@ total songs: 7
 Memory pool expanded to be 320 bytes.
 |Mongo Santamaria| is added to the artist database.
 |Watermelon Man| is added to the song database.
-(44,11)->(121,4)->(319,1)
+(44,11) -> (121,4) -> (319,1)
