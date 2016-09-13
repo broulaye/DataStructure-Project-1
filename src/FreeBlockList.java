@@ -6,9 +6,9 @@
  * @version 09/07/2016
  */
 public class FreeBlockList extends DLLinkedList<Block> {
-    
+
     private int poolLength;
-    
+
     /**
      * Constructor
      *
@@ -19,7 +19,7 @@ public class FreeBlockList extends DLLinkedList<Block> {
         if (poolsize > 0) {
             add(new Block(0, poolsize - 1));
         }
-        
+
         poolLength = poolsize;
     }
 
@@ -56,8 +56,7 @@ public class FreeBlockList extends DLLinkedList<Block> {
         if (size <= 0) {
             return "(" + poolLength + ", 0)";
         }
-        
-        
+
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < size(); i++) {
             builder.append(get(i).toString());
@@ -131,8 +130,8 @@ public class FreeBlockList extends DLLinkedList<Block> {
      *            length of block
      */
     public void freeUpSpace(int location, int length) {
-        if(size <= 0) {
-            add(new Block(location, length-1));
+        if (size <= 0) {
+            add(new Block(location, length - 1));
             return;
         }
         int rightEnd = location + length - 1;
@@ -166,7 +165,7 @@ public class FreeBlockList extends DLLinkedList<Block> {
             }
         }
     }
-    
+
     public int getPoolLenght() {
         return poolLength;
     }

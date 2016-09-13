@@ -64,7 +64,7 @@ public class FreeBlockListTest extends TestCase {
         list1.expand(5, list1.getPoolLenght());
         list1.getNextAvailable(3);
         assertEquals("(3,1) -> (14,5)", list1.printBlocks());
-        
+
     }
 
     /**
