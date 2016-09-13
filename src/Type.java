@@ -1,6 +1,6 @@
 /**
- * This class is an enum representation of the different type
- * the command can have
+ * This class is an enum representation of the different type the command can
+ * have
  *
  * @author Broulaye Doumbia
  * @author Cheick Berthe
@@ -20,9 +20,11 @@ public enum Type {
     public String toString() {
         if (this == Song) {
             return "song";
-        } else if (this == Artist) {
+        }
+        else if (this == Artist) {
             return "artist";
-        } else {
+        }
+        else {
             return "blocks";
         }
     }

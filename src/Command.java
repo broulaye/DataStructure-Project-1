@@ -18,9 +18,12 @@ public class Command {
     /**
      * Constructor that set the field to provided values
      *
-     * @param op     represent operation
-     * @param typ    represent type
-     * @param values represent values
+     * @param op
+     *            represent operation
+     * @param typ
+     *            represent type
+     * @param values
+     *            represent values
      */
     public Command(Operation op, Type typ, String[] values) {
         this.op = op;
@@ -29,10 +32,12 @@ public class Command {
     }
 
     /**
-     * Default constructor
+     * Default constructor set fields to default values
      */
     public Command() {
-
+        op = null;
+        typ = null;
+        values = null;
     }
 
     /**
@@ -47,7 +52,8 @@ public class Command {
     /**
      * Set the operation of the command
      *
-     * @param op value the operation is going to be set to
+     * @param op
+     *            value the operation is going to be set to
      */
     public void setOp(Operation op) {
         this.op = op;
@@ -65,7 +71,8 @@ public class Command {
     /**
      * Set the type of the command
      *
-     * @param typ value the type is going to be set to
+     * @param typ
+     *            value the type is going to be set to
      */
     public void setTyp(Type typ) {
         this.typ = typ;
@@ -83,7 +90,8 @@ public class Command {
     /**
      * Set the values of the command
      *
-     * @param values value the values is going to be set to
+     * @param values
+     *            value the values is going to be set to
      */
     public void setValues(String[] values) {
         this.values = values;

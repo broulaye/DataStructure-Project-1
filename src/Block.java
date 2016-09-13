@@ -1,5 +1,10 @@
 /**
- * Tuple object holding a pair of integers
+ * This class represent Tuple object holding a pair of integers
+ * 
+ * @author Broulaye Doumbia
+ * @author Cheick Berther
+ * @version 09/11/2016
+ *
  */
 public class Block {
     /**
@@ -13,8 +18,10 @@ public class Block {
     private int y;
 
     /**
-     * @param x first integer
-     * @param y second integer
+     * @param x
+     *            first integer
+     * @param y
+     *            second integer
      */
     public Block(int x, int y) {
         this.x = x;
@@ -51,7 +58,8 @@ public class Block {
     /**
      * Set the End position
      *
-     * @param y new value of y
+     * @param y
+     *            new value of y
      */
     public void setY(int y) {
         this.y = y;

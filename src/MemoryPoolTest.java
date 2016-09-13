@@ -16,9 +16,9 @@ public class MemoryPoolTest extends TestCase {
      * memory pool used in tests
      */
     private MemoryPool pool;
-    byte[] string;
-    String word;
-    PrintWriter writer = null;
+    private byte[] string;
+    private String word;
+    private PrintWriter writer = null;
 
     /**
      * initialize member variables
@@ -28,7 +28,8 @@ public class MemoryPoolTest extends TestCase {
         pool = new MemoryPool(10);
         try {
             writer = new PrintWriter("memoryPoolTest.txt", "UTF-8");
-        } catch (FileNotFoundException | UnsupportedEncodingException e) {
+        }
+        catch (FileNotFoundException | UnsupportedEncodingException e) {
             e.printStackTrace();
         }
     }
@@ -52,7 +53,7 @@ public class MemoryPoolTest extends TestCase {
         string = "BroulayeDoumbia".getBytes();
         int where = pool.put(string, 5, writer);
         pool.toString();
-        System.out.println(pool.getStringAt(where));
+        assertEquals("Broul", pool.getStringAt(where));
     }
 
     /**
@@ -68,7 +69,7 @@ public class MemoryPoolTest extends TestCase {
         pool.removeStringAt(at);
         System.out.println("\nAfter Remove");
         pool.printFreeBlocks();
-        pool.toString();
+        assertEquals("(0,9)", pool.printFreeBlocks());
 
     }
 }

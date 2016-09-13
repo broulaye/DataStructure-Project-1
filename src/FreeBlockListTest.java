@@ -26,7 +26,7 @@ public class FreeBlockListTest extends TestCase {
     public void testPrintBlocks() {
         list.add(0, new Block(2, 5));
         list.add(0, new Block(3, 6));
-        list.printBlocks();
+        assertEquals("(3,4) -> (2,4) -> (0,6)", list.printBlocks());
     }
 
     /**
@@ -49,8 +49,22 @@ public class FreeBlockListTest extends TestCase {
         list1.expand(5, 0);
         list1.getNextAvailable(4);
         list1.expand(6, 5);
-        list1.printBlocks();
+        System.out.println(list1.printBlocks());
         assertEquals(1, list1.size());
+        assertEquals(7, list1.get(0).getSize());
+        list1.getNextAvailable(7);
+        assertEquals("(11, 0)", list1.printBlocks());
+        list1.freeUpSpace(0, 4);
+        System.out.println(list1.printBlocks());
+        assertEquals("(0,4)", list1.printBlocks());
+        list1.expand(3, list1.getPoolLenght());
+        assertEquals("(0,4) -> (11,3)", list1.printBlocks());
+        list1.getNextAvailable(3);
+        assertEquals("(0,4)", list1.printBlocks());
+        list1.expand(5, list1.getPoolLenght());
+        list1.getNextAvailable(3);
+        assertEquals("(3,1) -> (14,5)", list1.printBlocks());
+        
     }
 
     /**
@@ -60,7 +74,7 @@ public class FreeBlockListTest extends TestCase {
         list.getNextAvailable(6);
         list.expand(5, 6);
         assertEquals(6, list.getNextAvailable(3));
-        list.printBlocks();
+        System.out.println(list.printBlocks());
     }
 
     /**
@@ -103,7 +117,6 @@ public class FreeBlockListTest extends TestCase {
         list.freeUpSpace(32, 2);
         assertEquals(5, list.get(3).getX());
         assertEquals(5, list.get(3).getY());
-
 
     }
 }

@@ -1,6 +1,5 @@
 /**
- * This class will represent the handle
- * that will store the location of the
+ * This class will represent the handle that will store the location of the
  * values in the mem manager
  *
  * @author Broulaye Doumbia
@@ -16,10 +15,10 @@ public class Handle {
     private boolean tombstone;
 
     /**
-     * Constructor that set up the
-     * filed with given values
+     * Constructor that set up the filed with given values
      *
-     * @param location given location
+     * @param location
+     *            given location
      */
     public Handle(int location) {
         this.location = location;
@@ -38,12 +37,12 @@ public class Handle {
     /**
      * set the location to a given value
      *
-     * @param location given value
+     * @param location
+     *            given value
      */
     public void setLocation(int location) {
         this.location = location;
     }
-
 
     /**
      * print the location

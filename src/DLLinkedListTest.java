@@ -31,14 +31,16 @@ public class DLLinkedListTest extends TestCase {
         Exception e = null;
         try {
             list.remove(2);
-        } catch (Exception exception) {
+        }
+        catch (Exception exception) {
             e = exception;
         }
         assertTrue(e instanceof IndexOutOfBoundsException);
         e = null;
         try {
             list.remove(-1);
-        } catch (Exception exception) {
+        }
+        catch (Exception exception) {
             e = exception;
         }
         assertTrue(e instanceof IndexOutOfBoundsException);
@@ -95,7 +97,8 @@ public class DLLinkedListTest extends TestCase {
         Exception e = null;
         try {
             list.add(null);
-        } catch (Exception exception) {
+        }
+        catch (Exception exception) {
             e = exception;
         }
         assertTrue(e instanceof IllegalArgumentException);
@@ -109,7 +112,8 @@ public class DLLinkedListTest extends TestCase {
         Exception e = null;
         try {
             list.add(0, null);
-        } catch (Exception exception) {
+        }
+        catch (Exception exception) {
             e = exception;
         }
         assertTrue(e instanceof IllegalArgumentException);
@@ -124,14 +128,16 @@ public class DLLinkedListTest extends TestCase {
         Exception e = null;
         try {
             list.add(2, "B");
-        } catch (Exception exception) {
+        }
+        catch (Exception exception) {
             e = exception;
         }
         assertTrue(e instanceof IndexOutOfBoundsException);
         e = null;
         try {
             list.add(-1, "B");
-        } catch (Exception exception) {
+        }
+        catch (Exception exception) {
             e = exception;
         }
         assertTrue(e instanceof IndexOutOfBoundsException);
@@ -161,7 +167,8 @@ public class DLLinkedListTest extends TestCase {
         Exception exception = null;
         try {
             list.get(-1);
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             exception = e;
         }
         assertTrue(exception instanceof IndexOutOfBoundsException);
@@ -169,12 +176,12 @@ public class DLLinkedListTest extends TestCase {
         list.add("A");
         try {
             list.get(1);
-        } catch (IndexOutOfBoundsException e) {
+        }
+        catch (IndexOutOfBoundsException e) {
             exception = e;
         }
         assertTrue(exception instanceof IndexOutOfBoundsException);
     }
-
 
     /**
      * Test the get method
@@ -193,7 +200,6 @@ public class DLLinkedListTest extends TestCase {
         assertEquals(list.get(7), "H");
         assertEquals(list.get(1), "B");
     }
-
 
     /**
      * Tests isEmpty when empty and full
@@ -217,14 +223,11 @@ public class DLLinkedListTest extends TestCase {
      * Tests the toString when there are 0, 1, and 2 objects in the list
      */
     public void testToString() {
-        assertEquals("()",
-                list.toString());
+        assertEquals("()", list.toString());
         list.add("A");
-        assertEquals("(A)",
-                list.toString());
+        assertEquals("(A)", list.toString());
         list.add("B");
-        assertEquals("(A, B)",
-                list.toString());
+        assertEquals("(A, B)", list.toString());
     }
 
     /**
@@ -239,7 +242,8 @@ public class DLLinkedListTest extends TestCase {
         exception = null;
         try {
             list.remove(0);
-        } catch (IndexOutOfBoundsException e) {
+        }
+        catch (IndexOutOfBoundsException e) {
             exception = e;
         }
         assertTrue(exception instanceof IndexOutOfBoundsException);
@@ -248,11 +252,11 @@ public class DLLinkedListTest extends TestCase {
         exception = null;
         try {
             emptyList.remove(0);
-        } catch (IndexOutOfBoundsException e) {
+        }
+        catch (IndexOutOfBoundsException e) {
             exception = e;
         }
         assertTrue(exception instanceof IndexOutOfBoundsException);
     }
-
 
 }

@@ -19,7 +19,8 @@ public class MemoryPool {
     /**
      * Constructor
      *
-     * @param poolSize initial size
+     * @param poolSize
+     *            initial size
      */
     public MemoryPool(int poolSize) {
         blockSize = poolSize;
@@ -30,9 +31,12 @@ public class MemoryPool {
     /**
      * Store bytes of given length
      *
-     * @param bytes   content in bytes
-     * @param length1 required lenght
-     * @param writer  used to return status of operation
+     * @param bytes
+     *            content in bytes
+     * @param length1
+     *            required lenght
+     * @param writer
+     *            used to return status of operation
      * @return position where bytes was stored
      */
     public int put(byte[] bytes, int length1, PrintWriter writer) {
@@ -43,7 +47,8 @@ public class MemoryPool {
             int newSize = pool.length + this.blockSize;
             freeBlockList.expand(blockSize, pool.length);
             pool = resizeArray(pool, newSize);
-            writer.println("Memory pool expanded to be " + pool.length + " bytes.");
+            writer.println(
+                    "Memory pool expanded to be " + pool.length + " bytes.");
             whereToStore = freeBlockList.getNextAvailable(length);
         }
         // copy size to pool as 2 byte number
@@ -61,7 +66,8 @@ public class MemoryPool {
     /**
      * get string stored at given location
      *
-     * @param location start position of string
+     * @param location
+     *            start position of string
      * @return string from memory pool
      */
     public String getStringAt(int location) {
@@ -76,7 +82,8 @@ public class MemoryPool {
     /**
      * Removes string at given location
      *
-     * @param location location of string
+     * @param location
+     *            location of string
      */
     public void removeStringAt(int location) {
         int length = (pool[location] << 8) + pool[location + 1];
@@ -85,6 +92,7 @@ public class MemoryPool {
 
     /**
      * Print content of memory pool
+     * @return a string representation of the memory pool
      */
     public String toString() {
         StringBuilder builder = new StringBuilder();
@@ -112,6 +120,7 @@ public class MemoryPool {
 
     /**
      * print free block list
+     * 
      * @return a string representation of the blocks
      */
     public String printFreeBlocks() {
@@ -124,8 +133,10 @@ public class MemoryPool {
     /**
      * Resize byte array
      *
-     * @param bytes   array to be resized
-     * @param newSize new size of array
+     * @param bytes
+     *            array to be resized
+     * @param newSize
+     *            new size of array
      * @return new array with new size
      */
     private byte[] resizeArray(byte[] bytes, int newSize) {

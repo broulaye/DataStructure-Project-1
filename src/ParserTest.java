@@ -29,22 +29,22 @@ public class ParserTest extends TestCase {
      */
     public void testParse() {
 
-
         Exception e = null;
 
         try {
             Parser.parse("error file");
-        } catch (Exception exception) {
+        }
+        catch (Exception exception) {
             e = exception;
             assertTrue(e instanceof FileNotFoundException);
         }
-
 
         e = null;
 
         try {
             Parser.parse("P1sampleInput.txt");
-        } catch (Exception exception) {
+        }
+        catch (Exception exception) {
             e = exception;
         }
 

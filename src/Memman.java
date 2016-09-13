@@ -1,12 +1,6 @@
-/**
- * Implementation of a song and artist storage system using a
- * memory manager
- * The class containing the main method.
- *
- * @author Cheick Berthe
- * @author Broulaye Doumbia
- * @version 9/6/2016
- */
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
 
 // On my honor:
 //
@@ -29,44 +23,63 @@
 // letter of this restriction.
 
 /**
- * Main class: entry point
+ * Implementation of a song and artist storage system using a memory manager The
+ * class containing the main method.
+ *
+ * @author Cheick Berthe
+ * @author Broulaye Doumbia
+ * @version 9/6/2016
  */
 public class Memman {
-	/**
-	 * @param args
-	 *            Command line parameters
-	 */
-	public static void main(String[] args) {
-		int hashSize = -1;
-		int blockSize = -1;
-		String fileName = "|";
-		if (args == null || args.length < 3) {
-			System.out.println("Usage: Memman {initial-hash-size} {block-size} {command-file}");
-			return;
-		}
-		for (int i = 0; i < 3; i++) {
-			switch (i) {
-			case 0:
-				hashSize = Integer.parseInt(args[i]);
-				break;
-			case 1:
-				blockSize = Integer.parseInt(args[i]);
-				break;
-			case 2:
-				fileName = args[i];
-				break;
-			}
-		}
+    /**
+     * @param args
+     *            Command line parameters
+     */
+    public static void main(String[] args) {
+        int hashSize;
+        int blockSize;
+        String fileName;
+        if (args == null || args.length != 3) {
+            System.out.println("Usage: Memman {initial-hash-size} "
+                    + "{block-size} {command-file}");
+            return;
+        }
 
-		try {
-			// initialize processor
-			Processor processor = new Processor(hashSize, blockSize, fileName);
-			// process commands
-			processor.process();
-		} 
-		catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+        hashSize = Integer.parseInt(args[0]);
+        blockSize = Integer.parseInt(args[1]);
+        fileName = args[2];
+
+        try {
+            // initialize processor
+            Processor processor = new Processor(hashSize, blockSize, fileName);
+            // process commands
+            processor.process();
+
+            File file = new File("output.txt");
+
+            // create a scanner object
+            Scanner reader;
+
+            try {
+                reader = new Scanner(file);
+
+                String token;
+
+                // while the file got for line execute the following commands
+                while (reader.hasNextLine()) {
+
+                    token = reader.nextLine();
+                    System.out.println(token);
+                }
+                reader.close();
+            }
+            catch (IOException exception) {
+                exception.printStackTrace();
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }

@@ -10,7 +10,6 @@ import student.TestCase;
 
 public class TypeTest extends TestCase {
 
-
     private Type newType;
 
     /**

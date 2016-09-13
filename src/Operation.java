@@ -1,6 +1,6 @@
 /**
- * This class is an enum representation of the different operation
- * the code can perform
+ * This class is an enum representation of the different operation the code can
+ * perform
  *
  * @author Broulaye Doumbia
  * @author Cheick Berthe
@@ -19,15 +19,15 @@ public enum Operation {
      */
     public String toString() {
 
-
         if (this == insert) {
             return "insert";
-        } else if (this == remove) {
+        }
+        else if (this == remove) {
             return "remove";
-        } else {
+        }
+        else {
             return "print";
         }
     }
-
 
 }

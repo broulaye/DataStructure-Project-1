@@ -18,7 +18,6 @@ public class Commands {
         commandList = new LinkedList<>();
     }
 
-
     /**
      * Get the current list of command
      *
@@ -31,7 +30,8 @@ public class Commands {
     /**
      * set the commandlist to a new list provided
      *
-     * @param commandList new list to be used
+     * @param commandList
+     *            new list to be used
      */
     public void setCommandList(LinkedList<Command> commandList) {
         this.commandList = commandList;
@@ -40,11 +40,11 @@ public class Commands {
     /**
      * add a new command to the list
      *
-     * @param c command to be added
+     * @param c
+     *            command to be added
      */
     public void add(Command c) {
         commandList.add(c);
     }
-
 
 }

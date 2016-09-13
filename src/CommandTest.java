@@ -22,7 +22,7 @@ public class CommandTest extends TestCase {
 
     public void setUp() {
         command1 = new Command();
-        String[] values = {"Lil Wayne", "A Mili"};
+        String[] values = { "Lil Wayne", "A Mili" };
         command2 = new Command(Operation.insert, null, values);
     }
 
@@ -62,7 +62,7 @@ public class CommandTest extends TestCase {
      * This tests getValues method
      */
     public void testgetValues() {
-        String[] values = {"Lil Wayne", "A Mili"};
+        String[] values = { "Lil Wayne", "A Mili" };
         for (int i = 0; i < values.length; i++) {
             assertEquals(values[i], command2.getValues()[i]);
         }
@@ -73,7 +73,7 @@ public class CommandTest extends TestCase {
      * This tests the setValues method
      */
     public void testsetValues() {
-        String[] values = {"Lil Wayne", "A Mili"};
+        String[] values = { "Lil Wayne", "A Mili" };
         command1.setValues(values);
         for (int i = 0; i < values.length; i++) {
             assertEquals(command1.getValues()[i], command2.getValues()[i]);

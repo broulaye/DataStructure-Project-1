@@ -1,22 +1,36 @@
 /**
  * This class represent a generic double linked list
  *
- * @param <T> represent generic type
+ * @param <T>
+ *            represent generic type
  * @author Broulaye Doumbia
  * @author Cheick Berthe
  * @version 09/05/2016
  */
 public class DLLinkedList<T> {
 
+    /**
+     * This class represent a node
+     * 
+     * @author Broulaye Doumbia
+     * @author Cheick Berthe
+     * @version 09/11/2016
+     * @param <T>
+     *            represent a generic type
+     */
     protected static class Node<T> {
-        protected Node<T> next;
-        protected Node<T> previous;
-        protected T data;
+        // This field represent the next node
+        private Node<T> next;
+        // This field represent the previous node
+        private Node<T> previous;
+        // This field represent the data store in the node
+        private T data;
 
         /**
          * Creates a new node with the given data
          *
-         * @param d the data to put inside the node
+         * @param d
+         *            the data to put inside the node
          */
         public Node(T d) {
             data = d;
@@ -25,7 +39,8 @@ public class DLLinkedList<T> {
         /**
          * Sets the node after this node
          *
-         * @param n the node after this one
+         * @param n
+         *            the node after this one
          */
         public void setNext(Node<T> n) {
             next = n;
@@ -34,7 +49,8 @@ public class DLLinkedList<T> {
         /**
          * Sets the node before this one
          *
-         * @param n the node before this one
+         * @param n
+         *            the node before this one
          */
         public void setPrevious(Node<T> n) {
             previous = n;
@@ -130,7 +146,8 @@ public class DLLinkedList<T> {
     /**
      * Appends element to list
      *
-     * @param element to be added
+     * @param element
+     *            to be added
      */
     public void add(T element) {
         add(size, element);
@@ -139,13 +156,14 @@ public class DLLinkedList<T> {
     /**
      * gets the node at that index
      *
-     * @param index index of query
+     * @param index
+     *            index of query
      * @return node at index
      */
     protected Node<T> getNodeAtIndex(int index) {
         if (index < 0 || size() <= index) {
-            throw new IndexOutOfBoundsException(""
-                    + "No element exists at " + index);
+            throw new IndexOutOfBoundsException(
+                    "" + "No element exists at " + index);
         }
 
         Node<T> current;
@@ -158,7 +176,8 @@ public class DLLinkedList<T> {
                 current = current.next();
             }
 
-        } else {
+        }
+        else {
 
             current = tail.previous();
             for (int i = size; i > (index + 1); i--) {
@@ -172,24 +191,29 @@ public class DLLinkedList<T> {
     /**
      * Adds the object to the position in the list
      *
-     * @param index where to add the object
-     * @param obj   the object to add
-     * @throws IndexOutOfBoundsException if index is less than zero or greater than size
-     * @throws IllegalArgumentException  if obj is null
+     * @param index
+     *            where to add the object
+     * @param obj
+     *            the object to add
+     * @throws IndexOutOfBoundsException
+     *             if index is less than zero or greater than size
+     * @throws IllegalArgumentException
+     *             if obj is null
      */
     public void add(int index, T obj) {
         if (index < 0 || size < index) {
             throw new IndexOutOfBoundsException();
         }
         if (obj == null) {
-            throw new IllegalArgumentException(""
-                    + "Cannot add null " + "objects to a list");
+            throw new IllegalArgumentException(
+                    "" + "Cannot add null " + "objects to a list");
         }
 
         Node<T> nodeAfter;
         if (index == size) {
             nodeAfter = tail;
-        } else {
+        }
+        else {
             nodeAfter = getNodeAtIndex(index);
         }
 
@@ -205,9 +229,11 @@ public class DLLinkedList<T> {
     /**
      * Removes the element at the specified index from the list
      *
-     * @param index where the object is located
+     * @param index
+     *            where the object is located
      * @return true if successful
-     * @throws IndexOutOfBoundsException if there is not an element at the index
+     * @throws IndexOutOfBoundsException
+     *             if there is not an element at the index
      */
     public boolean remove(int index) {
         Node<T> nodeToBeRemoved = getNodeAtIndex(index);
@@ -220,7 +246,8 @@ public class DLLinkedList<T> {
     /**
      * Removes the first object in the list that equals obj
      *
-     * @param obj the object to remove
+     * @param obj
+     *            the object to remove
      * @return true if the object was found and removed
      */
 
@@ -265,9 +292,11 @@ public class DLLinkedList<T> {
     /**
      * Gets the object at the given position
      *
-     * @param index where the object is located
+     * @param index
+     *            where the object is located
      * @return The object at the given position
-     * @throws IndexOutOfBoundsException if there no node at the given index
+     * @throws IndexOutOfBoundsException
+     *             if there no node at the given index
      */
     public T get(int index) {
 

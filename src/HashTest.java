@@ -22,14 +22,15 @@ public class HashTest extends TestCase {
     /**
      * this method generate random strings
      *
-     * @param count represent the string length
+     * @param count
+     *            represent the string length
      * @return a random string
      */
     public static String randomAlphaNumeric(int count) {
         StringBuilder builder = new StringBuilder();
         while (count-- != 0) {
-            int character = (int) (Math.random() *
-                    ALPHA_NUMERIC_STRING.length());
+            int character =
+                    (int) (Math.random() * ALPHA_NUMERIC_STRING.length());
             builder.append(ALPHA_NUMERIC_STRING.charAt(character));
         }
         return builder.toString();
@@ -40,8 +41,9 @@ public class HashTest extends TestCase {
      */
     public void setUp() {
         try {
-            PrintWriter printWriter = writer = new PrintWriter("testHash.txt", "UTF-8");
-        } catch (UnsupportedEncodingException | FileNotFoundException e) {
+            writer = new PrintWriter("testHash.txt", "UTF-8");
+        }
+        catch (UnsupportedEncodingException | FileNotFoundException e) {
             e.printStackTrace();
         }
     }
@@ -60,7 +62,8 @@ public class HashTest extends TestCase {
                 myHash.insertString(randomAlphaNumeric(Math.round(6)), writer);
             }
             System.out.print(myHash.printTable());
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             assertTrue(e instanceof Exception);
         }
 
@@ -75,7 +78,8 @@ public class HashTest extends TestCase {
         try {
             table = new Hash(-2, new MemManager(2), testString);
             table.insertString("cheick", writer);
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             assertTrue(e instanceof Exception);
         }
     }
@@ -92,7 +96,8 @@ public class HashTest extends TestCase {
             boolean result2 = table.insertString(str, writer);
             assertTrue(result1);
             assertFalse(result2);
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             assertTrue(e instanceof Exception);
             e.printStackTrace();
         }
@@ -106,10 +111,11 @@ public class HashTest extends TestCase {
         try {
             Hash table = new Hash(3, manager, testString);
             String str = "berthe";
-            boolean result = table.insertString(str, writer);
+            table.insertString(str, writer);
 
             assertEquals(1, table.getElement());
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             assertTrue(e instanceof Exception);
             e.printStackTrace();
         }

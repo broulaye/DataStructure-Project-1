@@ -1,40 +1,50 @@
 /**
- * Represent the free block list keeping
- * track of the available free blocks
+ * Represent the free block list keeping track of the available free blocks
  *
  * @author Broulaye Doumbia
  * @author Cheick Berthe
  * @version 09/07/2016
  */
 public class FreeBlockList extends DLLinkedList<Block> {
+    
+    private int poolLength;
+    
     /**
      * Constructor
      *
-     * @param poolsize size of free space
+     * @param poolsize
+     *            size of free space
      */
     public FreeBlockList(int poolsize) {
         if (poolsize > 0) {
             add(new Block(0, poolsize - 1));
         }
+        
+        poolLength = poolsize;
     }
 
     /**
      * Expand list by addition
      *
-     * @param additionalLength additional length
-     * @param oldLength        represent the old length
+     * @param additionalLength
+     *            additional length
+     * @param oldLength
+     *            represent the old length
      */
     public void expand(int additionalLength, int oldLength) {
         if (size() == 0) {
             add(new Block(oldLength, oldLength + additionalLength - 1));
+            poolLength += additionalLength;
             return;
         }
         Block lastBlock = get(size() - 1);
         if (lastBlock.getY() == oldLength - 1) {
             lastBlock.setY(lastBlock.getY() + additionalLength);
-        } else {
+        }
+        else {
             add(new Block(oldLength, oldLength + additionalLength - 1));
         }
+        poolLength += additionalLength;
     }
 
     /**
@@ -43,6 +53,11 @@ public class FreeBlockList extends DLLinkedList<Block> {
      * @return a string representation of the list
      */
     public String printBlocks() {
+        if (size <= 0) {
+            return "(" + poolLength + ", 0)";
+        }
+        
+        
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < size(); i++) {
             builder.append(get(i).toString());
@@ -54,19 +69,17 @@ public class FreeBlockList extends DLLinkedList<Block> {
     }
 
     /**
-     * get the next available free space
-     * of requredLength using best fit
+     * get the next available free space of requredLength using best fit
      * algorithm
      *
-     * @param requiredLength length to look for
-     * @return -1 if no free space is found
-     * otherwise return start of free block
+     * @param requiredLength
+     *            length to look for
+     * @return -1 if no free space is found otherwise return start of free block
      */
     public int getNextAvailable(int requiredLength) {
-        //TODO: optimize algorithm here
         // check if list is empty
         if (size() == 0) {
-            //expand(requiredLength, 0);
+            // expand(requiredLength, 0);
             return -1;
         }
         int min = -1;
@@ -80,7 +93,8 @@ public class FreeBlockList extends DLLinkedList<Block> {
                 if (min < 0) {
                     min = newMin;
                     at = i;
-                } else if (newMin < min) {
+                }
+                else if (newMin < min) {
                     min = newMin;
                     at = i;
                 }
@@ -95,12 +109,14 @@ public class FreeBlockList extends DLLinkedList<Block> {
             int startOfFreeBlock = get(at).getX();
             remove(at);
             return startOfFreeBlock;
-        } else {
+        }
+        else {
             int remainingSpace = currentLength - requiredLength;
             int newStart = get(at).getX() + requiredLength;
             int startOfFreeBlock = get(at).getX();
             remove(at);
-            Block newFreeBlock = new Block(newStart, newStart + remainingSpace - 1);
+            Block newFreeBlock =
+                    new Block(newStart, newStart + remainingSpace - 1);
             add(at, newFreeBlock);
             return startOfFreeBlock;
         }
@@ -109,10 +125,16 @@ public class FreeBlockList extends DLLinkedList<Block> {
     /**
      * Adds new free space block
      *
-     * @param location start of block
-     * @param length   length of block
+     * @param location
+     *            start of block
+     * @param length
+     *            length of block
      */
     public void freeUpSpace(int location, int length) {
+        if(size <= 0) {
+            add(new Block(location, length-1));
+            return;
+        }
         int rightEnd = location + length - 1;
         Block newBlock;
         for (int it = 0; it < size(); it++) {
@@ -143,5 +165,9 @@ public class FreeBlockList extends DLLinkedList<Block> {
                 return;
             }
         }
+    }
+    
+    public int getPoolLenght() {
+        return poolLength;
     }
 }

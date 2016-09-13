@@ -17,7 +17,9 @@ public class Parser {
     /**
      * parse the file name fileN
      *
-     * @param fileN name of the file to be parsed
+     * @param fileN
+     *            name of the file to be parsed
+     * @return a list of commands
      */
     public static Commands parse(String fileN) {
 
@@ -65,9 +67,11 @@ public class Parser {
 
                         if (line[1].equals("song")) {
                             command.setTyp(Type.Song);
-                        } else if (line[1].equals("artist")) {
+                        }
+                        else if (line[1].equals("artist")) {
                             command.setTyp(Type.Artist);
-                        } else {
+                        }
+                        else {
                             System.out.println("Illegal type: " + line[1]);
                         }
 
@@ -84,11 +88,14 @@ public class Parser {
 
                         if (line[1].equals("song")) {
                             command.setTyp(Type.Song);
-                        } else if (line[1].equals("artist")) {
+                        }
+                        else if (line[1].equals("artist")) {
                             command.setTyp(Type.Artist);
-                        } else if (line[1].equals("blocks")) {
+                        }
+                        else if (line[1].equals("blocks")) {
                             command.setTyp(Type.Block);
-                        } else {
+                        }
+                        else {
                             System.out.println("Illegal type: " + line[1]);
                         }
 
@@ -111,7 +118,8 @@ public class Parser {
             }
 
             reader.close();
-        } catch (IOException exception) {
+        }
+        catch (IOException exception) {
             exception.printStackTrace();
         }
 
