@@ -38,7 +38,7 @@ public class Memman {
     public static void main(String[] args) {
         int hashSize;
         int blockSize;
-        String fileName;
+        String InputfileName;
         if (args == null || args.length != 3) {
             System.out.println("Usage: Memman {initial-hash-size} "
                     + "{block-size} {command-file}");
@@ -47,11 +47,11 @@ public class Memman {
 
         hashSize = Integer.parseInt(args[0]);
         blockSize = Integer.parseInt(args[1]);
-        fileName = args[2];
+        InputfileName = args[2];
 
         try {
             // initialize processor
-            Processor processor = new Processor(hashSize, blockSize, fileName);
+            Processor processor = new Processor(hashSize, blockSize, InputfileName);
             // process commands
             processor.process();
 

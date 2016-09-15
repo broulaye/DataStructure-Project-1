@@ -40,5 +40,20 @@ public class HandleTest extends TestCase {
     public void testtoString() {
         assertEquals("1", handle2.toString());
     }
+    
+    /**
+     * test isTombstone method
+     */
+    public void testisTombstone() {
+        assertFalse(handle1.isTombStone());
+    }
+    
+    /**
+     * test resetTombstone methode
+     */
+    public void testsetTombstone() {
+        handle1.setTombstone();
+        assertTrue(handle1.isTombStone());
+    }
 
 }

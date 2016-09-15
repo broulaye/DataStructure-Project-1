@@ -26,17 +26,14 @@ public class HashTest extends TestCase {
      * @param count
      *            represent the string length
      * @return a random string
+     * 
+     *         private static String randomAlphaNumeric(int count) {
+     *         StringBuilder builder = new StringBuilder(); while (count-- != 0)
+     *         { int character = (int) (Math.random() *
+     *         ALPHA_NUMERIC_STRING.length());
+     *         builder.append(ALPHA_NUMERIC_STRING.charAt(character)); } return
+     *         builder.toString(); }
      */
-    public static String randomAlphaNumeric(int count) {
-        StringBuilder builder = new StringBuilder();
-        while (count-- != 0) {
-            int character =
-                    (int) (Math.random() * ALPHA_NUMERIC_STRING.length());
-            builder.append(ALPHA_NUMERIC_STRING.charAt(character));
-        }
-        return builder.toString();
-    }
-
     /**
      * Sets up the tests that follow.
      */
@@ -61,7 +58,8 @@ public class HashTest extends TestCase {
             myHash = new Hash(2, memManager, testString);
             assertTrue(myHash.insertString("broulaye", writer));
             assertTrue(myHash.insertString("Cheick", writer));
-            assertEquals("|broulaye| 2\n|Cheick| 3\ntotal tests: 2\n", myHash.printTable());
+            assertEquals("|broulaye| 2\n|Cheick| 3\ntotal tests: 2\n",
+                    myHash.printTable());
             assertTrue(myHash.removeString("broulaye"));
             assertFalse(myHash.removeString("broulaye"));
             assertEquals("|Cheick| 3\ntotal tests: 1\n", myHash.printTable());
@@ -69,13 +67,17 @@ public class HashTest extends TestCase {
             assertFalse(myHash.removeString("Cheick"));
             assertEquals("total tests: 0\n", myHash.printTable());
             assertEquals(0, myHash.getElement());
+            assertTrue(myHash.insertString("Cheick", writer));
+            assertTrue(myHash.insertString("Cheicks", writer));
+            assertTrue(myHash.insertString("Cheikc", writer));
+
         }
         catch (Exception e) {
             assertTrue(e instanceof Exception);
         }
 
     }
-    
+
     /**
      * Test the hash table with negative size
      */
@@ -127,6 +129,7 @@ public class HashTest extends TestCase {
             e.printStackTrace();
         }
     }
+
     /**
      * Test Delete element from empty hash table
      */

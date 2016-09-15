@@ -3,6 +3,7 @@ print blocks
 print song
 print artist
 insert Blind Lemon Jefferson<SEP>Long Lonesome Blues
+insert Blind Lemon Jefferson<SEP>Long Lonesome Blues
 insert Ma Rainey<SEP>Ma Rainey's Black Bottom
 insert Charley Patton<SEP>Mississippi Boweavil Blues
 insert Sleepy John Estes<SEP>Street Car Blues

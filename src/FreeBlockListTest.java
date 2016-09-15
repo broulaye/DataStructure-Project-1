@@ -156,6 +156,13 @@ public class FreeBlockListTest extends TestCase {
         list.freeUpSpace(32, 2);
         assertEquals(27, list.get(3).getX());
         assertEquals(33, list.get(3).getY());
+        
+        list.remove(0);
+        
+        list.freeUpSpace(1, 2);
+        
+        assertEquals(1, list.get(0).getX());
+        assertEquals(2, list.get(0).getY());
 
     }
 }

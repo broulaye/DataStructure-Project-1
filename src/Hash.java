@@ -57,7 +57,7 @@ public class Hash {
         int i = 0;
         do {
             if (valueArray[pos] != null
-                    && str.equals(handle2String(valueArray[pos])) 
+                    && str.equals(handle2String(valueArray[pos]))
                     && !valueArray[pos].isTombStone()) {
                 return pos;
             }
@@ -101,7 +101,7 @@ public class Hash {
         int pos = index;
         int i = 0;
         while (valueArray[pos] != null) {
-            if(valueArray[pos].isTombStone()) {
+            if (valueArray[pos].isTombStone()) {
                 break;
             }
             pos = (index + ++i * i) % valueArray.length;
@@ -122,7 +122,10 @@ public class Hash {
         int index = hash(handle2String(handle), valueArray.length);
         int pos = index;
         int i = 0;
-        while (valueArray[pos] != null && !valueArray[pos].isTombStone()) {
+        while (valueArray[pos] != null) {
+            if (valueArray[pos].isTombStone()) {
+                break;
+            }
             pos = (index + ++i * i) % valueArray.length;
         }
         valueArray[pos] = handle;
@@ -215,7 +218,7 @@ public class Hash {
         Handle[] copy = valueArray.clone();
         valueArray = new Handle[valueArray.length * 2];
         for (Handle handle : copy) {
-            if (handle != null && !handle.isTombStone()) {
+            if (handle != null ) {
                 insert(handle);
             }
         }

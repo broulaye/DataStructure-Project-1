@@ -108,7 +108,6 @@ public class Parser {
 
                         break;
                     default:
-                        System.out.println("Unrecognized Command");
                         break;
 
                 }
