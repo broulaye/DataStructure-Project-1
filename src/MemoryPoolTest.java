@@ -73,4 +73,15 @@ public class MemoryPoolTest extends TestCase {
         assertEquals("(0,10)", pool.printFreeBlocks());
 
     }
+    /**
+     * Remove on empty pool
+     */
+    public void testRemoveOnEmpty() {
+        string = "VirginiaTech".getBytes();
+        System.out.println(pool.printFreeBlocks());
+        int at = 2;
+        pool.removeStringAt(at);
+        String noString = pool.getStringAt(at);
+        assertEquals("", noString);
+    }
 }

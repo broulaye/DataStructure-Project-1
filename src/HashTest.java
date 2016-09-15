@@ -1,3 +1,4 @@
+import org.junit.Assert;
 import student.TestCase;
 
 import java.io.FileNotFoundException;
@@ -120,6 +121,20 @@ public class HashTest extends TestCase {
             table.insertString(str, writer);
 
             assertEquals(1, table.getElement());
+        }
+        catch (Exception e) {
+            assertTrue(e instanceof Exception);
+            e.printStackTrace();
+        }
+    }
+    /**
+     * Test Delete element from empty hash table
+     */
+    public void testRemoveElement() {
+        MemManager manager = new MemManager(1);
+        try {
+            Hash table = new Hash(1, manager, testString);
+            Assert.assertFalse(table.removeString("kodonso"));
         }
         catch (Exception e) {
             assertTrue(e instanceof Exception);
