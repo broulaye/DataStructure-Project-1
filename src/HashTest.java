@@ -49,26 +49,32 @@ public class HashTest extends TestCase {
     }
 
     /**
-     * Test the hash table
+     * Test insertion and deletion from the hash table
      */
     public void testInsert() {
 
         Hash myHash;
         MemManager memManager;
         try {
-            memManager = new MemManager(2);
+            memManager = new MemManager(80);
             myHash = new Hash(2, memManager, testString);
-            for (int i = 0; i < 20; i++) {
-                myHash.insertString(randomAlphaNumeric(Math.round(6)), writer);
-            }
-            System.out.print(myHash.printTable());
+            assertTrue(myHash.insertString("broulaye", writer));
+            assertTrue(myHash.insertString("Cheick", writer));
+            assertEquals("|broulaye| 2\n|Cheick| 3\ntotal tests: 2\n", myHash.printTable());
+            assertTrue(myHash.removeString("broulaye"));
+            assertFalse(myHash.removeString("broulaye"));
+            assertEquals("|Cheick| 3\ntotal tests: 1\n", myHash.printTable());
+            assertTrue(myHash.removeString("Cheick"));
+            assertFalse(myHash.removeString("Cheick"));
+            assertEquals("total tests: 0\n", myHash.printTable());
+            assertEquals(0, myHash.getElement());
         }
         catch (Exception e) {
             assertTrue(e instanceof Exception);
         }
 
     }
-
+    
     /**
      * Test the hash table with negative size
      */

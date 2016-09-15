@@ -61,15 +61,16 @@ public class MemoryPoolTest extends TestCase {
      */
     public void testRemove() {
         string = "VirginiaTech".getBytes();
-
+        System.out.println(pool.printFreeBlocks());
         int at = pool.put(string, 6, writer);
         System.out.println("Before Remove");
+        System.out.println(pool.printFreeBlocks());
         pool.toString();
         pool.printFreeBlocks();
         pool.removeStringAt(at);
         System.out.println("\nAfter Remove");
-        pool.printFreeBlocks();
-        assertEquals("(0,9)", pool.printFreeBlocks());
+        System.out.println(pool.printFreeBlocks());
+        assertEquals("(0,10)", pool.printFreeBlocks());
 
     }
 }

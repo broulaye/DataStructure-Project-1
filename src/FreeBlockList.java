@@ -53,8 +53,9 @@ public class FreeBlockList extends DLLinkedList<Block> {
      * @return a string representation of the list
      */
     public String printBlocks() {
-        if (size <= 0) {
-            return "(" + poolLength + ", 0)";
+
+        if (size == 0) {
+            return "(" + poolLength + ",0)";
         }
 
         StringBuilder builder = new StringBuilder();
@@ -86,7 +87,7 @@ public class FreeBlockList extends DLLinkedList<Block> {
         int currentLength;
         for (int i = 0; i < size(); i++) {
             // get size of current node
-            currentLength = get(i).getY() - get(i).getX() + 1;
+            currentLength = get(i).getSize();
             int newMin = currentLength - requiredLength;
             if (newMin >= 0) {
                 if (min < 0) {
@@ -103,7 +104,7 @@ public class FreeBlockList extends DLLinkedList<Block> {
         if (at < 0) {
             return at;
         }
-        currentLength = get(at).getY() - get(at).getX() + 1;
+        currentLength = get(at).getSize();
         if (currentLength == requiredLength) {
             int startOfFreeBlock = get(at).getX();
             remove(at);
@@ -130,42 +131,93 @@ public class FreeBlockList extends DLLinkedList<Block> {
      *            length of block
      */
     public void freeUpSpace(int location, int length) {
-        if (size <= 0) {
-            add(new Block(location, length - 1));
+        //add a new node when the list is empty
+        if(size == 0) {
+            add(0, new Block(location, location+length-1));
             return;
         }
-        int rightEnd = location + length - 1;
-        Block newBlock;
-        for (int it = 0; it < size(); it++) {
-            if (location < get(it).getX()) {
-                // add to left of node
-                if (rightEnd + 1 == get(it).getX()) {
-                    // merge
-                    newBlock = new Block(location, get(it).getX());
-                    remove(it);
-                    add(it, newBlock);
-                    return;
-                }
-                newBlock = new Block(location, rightEnd);
-                add(it, newBlock);
-                return;
-            }
-            if (location > get(it).getY()) {
-                // add to right of node
-                if (location - 1 == get(it).getY()) {
-                    // merge
-                    newBlock = new Block(get(it).getX(), rightEnd);
-                    remove(it);
-                    add(it, newBlock);
-                    return;
-                }
-                newBlock = new Block(location, rightEnd);
-                add(it + 1, newBlock);
-                return;
-            }
+        
+        
+        Block node;
+        int x = location - 1;
+        int y = location + length;
+        int i = 0;
+        node = get(i);//head node
+        // check is you can merge with node at the right
+        if (node.getX() == y) {
+            add(0, new Block(location, location + length - 1));
+            merge(0, 1);
         }
+        else if (node.getX() < y) {
+            while (node.getX() < y) {
+                i++;
+                if (i == size()) {
+                    break;
+                }
+                node = get(i);
+
+            }
+
+            add(i, new Block(location, location + length - 1));
+            
+            if (i+1 == size()) {
+                if (get(i - 1).getY() == x) {
+                    
+                    //add(i, new Block(location, location + length - 1));
+                    
+                    merge(i - 1, i);
+
+                    return;
+                }
+                else {
+                    //add(i, new Block(location, location + length - 1));
+                    return;
+                }
+            }
+            
+
+            if (get(i - 1).getY() == x) {
+               
+                merge(i - 1, i);
+                int newlocation = i-1;
+
+                if ((get(newlocation).getY()+1) == get(newlocation+1).getX()) {
+
+                    merge(newlocation, newlocation+1);
+
+                }
+            }
+            else if ((get(i + 1).getX()) == y) {
+
+                merge(i, i + 1);
+
+                }
+        }
+
+        else {
+            add(0, new Block(location, location+length-1));
+        }
+
     }
 
+    /**
+     * merge to node at given location
+     * 
+     * @param loc1
+     *            first location
+     * @param loc2
+     *            second location
+     */
+    private void merge(int loc1, int loc2) {
+        get(loc1).setY(get(loc2).getY());
+        remove(get(loc2));
+    }
+
+    /**
+     * get pool lenght
+     * 
+     * @return poolLenght
+     */
     public int getPoolLenght() {
         return poolLength;
     }

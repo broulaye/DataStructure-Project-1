@@ -57,7 +57,8 @@ public class Hash {
         int i = 0;
         do {
             if (valueArray[pos] != null
-                    && str.equals(handle2String(valueArray[pos]))) {
+                    && str.equals(handle2String(valueArray[pos])) 
+                    && !valueArray[pos].isTombStone()) {
                 return pos;
             }
             pos = (index + ++i * i) % valueArray.length;
@@ -99,7 +100,10 @@ public class Hash {
         int index = hash(str, valueArray.length);
         int pos = index;
         int i = 0;
-        while (valueArray[pos] != null && !valueArray[pos].isTombStone()) {
+        while (valueArray[pos] != null) {
+            if(valueArray[pos].isTombStone()) {
+                break;
+            }
             pos = (index + ++i * i) % valueArray.length;
         }
         numbElements++;
