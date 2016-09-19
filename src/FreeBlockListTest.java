@@ -34,44 +34,41 @@ public class FreeBlockListTest extends TestCase {
      */
     public void testNextAvailable() {
         System.out.println("Test next availabe: ");
-        
-        System.out.println(list.printBlocks());//0,6
-        
+
+        System.out.println(list.printBlocks()); // 0,6
+
         assertEquals(0, list.getNextAvailable(4));
-        
-        System.out.println(list.printBlocks());//0,4
-        
+
+        System.out.println(list.printBlocks()); // 0,4
+
         assertEquals(-1, list.getNextAvailable(3));
-        
-        System.out.println(list.printBlocks());//0,4
-        
+
+        System.out.println(list.printBlocks()); // 0,4
+
         assertEquals(4, list.getNextAvailable(2));
-        
-        System.out.println(list.printBlocks());//6,0
-        
+
+        System.out.println(list.printBlocks()); // 6,0
+
         list.freeUpSpace(0, 3);
-        
-        System.out.println(list.printBlocks());//0,3
-        
+
+        System.out.println(list.printBlocks()); // 0,3
+
         list.expand(5, 6);
-        
-        System.out.println(list.printBlocks());//0,3 -> 6,5
-        
+
+        System.out.println(list.printBlocks()); // 0,3 -> 6,5
+
         list.getNextAvailable(4);
-        
-        System.out.println(list.printBlocks());//0,3 -> 6,5
-        
+
+        System.out.println(list.printBlocks()); // 0,3 -> 6,5
+
         list.getNextAvailable(1);
-        
-        System.out.println(list.printBlocks());//0,3 -> 6,5
-        
+
+        System.out.println(list.printBlocks()); // 0,3 -> 6,5
+
         list.printBlocks();
-        
-        
+
         FreeBlockList list1 = new FreeBlockList(0);
-        
-        
-        
+
         assertEquals(-1, list1.getNextAvailable(7));
     }
 
@@ -110,12 +107,15 @@ public class FreeBlockListTest extends TestCase {
         assertEquals(6, list.getNextAvailable(3));
         System.out.println(list.printBlocks());
     }
+
     /**
      * Empty list test case
      */
     public void testEmpty() {
         System.out.println(list.printBlocks());
+        assertFalse(list.isEmpty());
     }
+
     /**
      * Make free space
      */
@@ -156,11 +156,11 @@ public class FreeBlockListTest extends TestCase {
         list.freeUpSpace(32, 2);
         assertEquals(27, list.get(3).getX());
         assertEquals(33, list.get(3).getY());
-        
+
         list.remove(0);
-        
+
         list.freeUpSpace(1, 2);
-        
+
         assertEquals(1, list.get(0).getX());
         assertEquals(2, list.get(0).getY());
 

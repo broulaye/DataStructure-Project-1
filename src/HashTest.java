@@ -17,8 +17,8 @@ import java.io.UnsupportedEncodingException;
 public class HashTest extends TestCase {
     private PrintWriter writer;
     private String testString = "test";
-    private static final String ALPHA_NUMERIC_STRING =
-            "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    //private static final String ALPHA_NUMERIC_STRING =
+            //"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
     /**
      * this method generate random strings

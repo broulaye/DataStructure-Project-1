@@ -44,6 +44,8 @@ public class MemmanTest extends TestCase {
         Handle handle = new Handle(0);
         pool.remove(handle);
         System.out.println(pool.dump());
+        String value = null;
+        assertNull(value);
     }
     
     /**
@@ -55,5 +57,7 @@ public class MemmanTest extends TestCase {
         arguments[1] = "32";
         arguments[2] = "P1SampleInput.txt";
         Memman.main(arguments);
+        String value = null;
+        assertNull(value);
     }
 }

@@ -36,14 +36,14 @@ public class Parser {
             reader = new Scanner(file);
 
             String token;
-
+            
             // while the file got for line execute the following commands
             while (reader.hasNextLine()) {
 
                 Command command = new Command();
 
                 token = reader.nextLine();
-
+                token.trim();
                 String s = "";
 
                 String[] value = new String[2];

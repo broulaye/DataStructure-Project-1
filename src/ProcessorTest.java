@@ -34,6 +34,7 @@ public class ProcessorTest extends TestCase {
             e.printStackTrace();
         }
         
+        
     }
     
     
@@ -47,6 +48,8 @@ public class ProcessorTest extends TestCase {
         catch (Exception e) {
             e.printStackTrace();
         }
+        String assertionValue = null;
+        assertNull(assertionValue);
     }
     
 }

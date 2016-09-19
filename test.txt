@@ -1,0 +1,22 @@
+print blocks
+print song
+print artist
+remove artist Blind Lemon Jefferson
+insert Blind Lemon Jefferson<SEP>Long Lonesome Blues
+print song
+print blocks
+remove artist Blind Lemon Jefferson
+print artist
+print blocks
+remove song Long Lonesome Blues
+print blocks
+insert Bukka White<SEP>Bukka White's first song
+print blocks
+insert Charley Patton<SEP>Mississippi Boweavil Blues
+print blocks
+remove artist Charley Patton
+print blocks
+remove song Mississippi Boweavil Blues
+print blocks
+print song
+print artist

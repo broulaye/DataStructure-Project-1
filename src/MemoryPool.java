@@ -43,7 +43,7 @@ public class MemoryPool {
         int length = length1 + 2;
         int whereToStore = freeBlockList.getNextAvailable(length);
         // keep expanding until there is enough free space
-        while (length >= pool.length || whereToStore == -1) {
+        while (length > pool.length || whereToStore == -1) {
             int newSize = pool.length + this.blockSize;
             freeBlockList.expand(blockSize, pool.length);
             pool = resizeArray(pool, newSize);
@@ -51,12 +51,15 @@ public class MemoryPool {
                     "Memory pool expanded to be " + pool.length + " bytes.");
             whereToStore = freeBlockList.getNextAvailable(length);
         }
+        
+        System.out.println("String appended at location: " + whereToStore);
+        
         // copy size to pool as 2 byte number
         pool[whereToStore] = (byte) ((length1 >> 8) & 0xFF);
         pool[whereToStore + 1] = (byte) (length1 & 0xFF);
         // copy byte into memory pool
         int j = 0;
-        for (int i = whereToStore + 2; i < whereToStore + length; i++) {
+        for (int i = whereToStore + 2; i < (whereToStore + length); i++) {
             pool[i] = bytes[j];
             j++;
         }
@@ -125,7 +128,7 @@ public class MemoryPool {
      */
     public String printFreeBlocks() {
         if (freeBlockList.isEmpty() && pool.length > 0) {
-            return "(" + (pool.length - 1) + ", " + "0)";
+            return "(" + (pool.length - 1) + "," + "0)";
         }
         return freeBlockList.printBlocks();
     }

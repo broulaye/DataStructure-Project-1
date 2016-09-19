@@ -44,6 +44,7 @@ public class FreeBlockList extends DLLinkedList<Block> {
         else {
             add(new Block(oldLength, oldLength + additionalLength - 1));
         }
+        
         poolLength += additionalLength;
     }
 
@@ -131,18 +132,17 @@ public class FreeBlockList extends DLLinkedList<Block> {
      *            length of block
      */
     public void freeUpSpace(int location, int length) {
-        //add a new node when the list is empty
-        if(size == 0) {
-            add(0, new Block(location, location+length-1));
+        // add a new node when the list is empty
+        if (size == 0) {
+            add(0, new Block(location, location + length - 1));
             return;
         }
-        
-        
+
         Block node;
         int x = location - 1;
         int y = location + length;
         int i = 0;
-        node = get(i);//head node
+        node = get(i); // head node
         // check is you can merge with node at the right
         if (node.getX() == y) {
             add(0, new Block(location, location + length - 1));
@@ -159,31 +159,31 @@ public class FreeBlockList extends DLLinkedList<Block> {
             }
 
             add(i, new Block(location, location + length - 1));
-            
-            if (i+1 == size()) {
+
+            if (i + 1 == size()) {
                 if (get(i - 1).getY() == x) {
-                    
-                    //add(i, new Block(location, location + length - 1));
-                    
+
+                    // add(i, new Block(location, location + length - 1));
+
                     merge(i - 1, i);
 
                     return;
                 }
                 else {
-                    //add(i, new Block(location, location + length - 1));
+                    // add(i, new Block(location, location + length - 1));
                     return;
                 }
             }
-            
 
             if (get(i - 1).getY() == x) {
-               
+
                 merge(i - 1, i);
-                int newlocation = i-1;
+                int newlocation = i - 1;
 
-                if ((get(newlocation).getY()+1) == get(newlocation+1).getX()) {
+                if ((get(newlocation).getY() + 1) == get(newlocation + 1)
+                        .getX()) {
 
-                    merge(newlocation, newlocation+1);
+                    merge(newlocation, newlocation + 1);
 
                 }
             }
@@ -191,11 +191,11 @@ public class FreeBlockList extends DLLinkedList<Block> {
 
                 merge(i, i + 1);
 
-                }
+            }
         }
 
         else {
-            add(0, new Block(location, location+length-1));
+            add(0, new Block(location, location + length - 1));
         }
 
     }

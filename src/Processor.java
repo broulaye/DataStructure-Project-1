@@ -43,9 +43,11 @@ public class Processor {
      */
     public void process() throws Exception {
         try {
+            int count = 0;
             PrintWriter writer = new PrintWriter("output.txt", "UTF-8");
             LinkedList<Command> list = commands.getCommandList();
             for (Command command : list) {
+                count++;
                 switch (command.getOp()) {
                     case insert:
                         insert(command.getValues()[0], command.getValues()[1],

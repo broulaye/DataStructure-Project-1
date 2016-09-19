@@ -56,9 +56,7 @@ public class Hash {
         int pos = index;
         int i = 0;
         do {
-            if (valueArray[pos] != null
-                    && str.equals(handle2String(valueArray[pos]))
-                    && !valueArray[pos].isTombStone()) {
+            if (valueArray[pos] != null && !valueArray[pos].isTombStone() && str.equalsIgnoreCase(handle2String(valueArray[pos]))) {
                 return pos;
             }
             pos = (index + ++i * i) % valueArray.length;

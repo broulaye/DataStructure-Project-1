@@ -1,0 +1,34 @@
+insert Blind Lemon Jefferson<SEP>Long Lo
+insert Ma Rainey<SEP>Ma Rainey's Black Bottom
+insert Charley Patton<SEP>Mississippi Boweavil Blues
+insert Sleepy John Estes<SEP>Street Car Blues
+insert Bukka White<SEP>Fixin' To Die Blues
+insert Blind Lemon Jefferson<SEP>Got The Blues
+insert Little Eva<SEP>The Loco-Motion
+insert Guitar Slim<SEP>The Things That I Used To Do
+print artist
+print song
+print blocks
+remove artist Blind Lemon Jefferson
+remove artist Ma Rainey
+remove artist Charley Patton
+remove artist Sleepy John Estes
+remove artist Bukka White
+remove artist Little Eva
+remove artist Guitar Slim
+remove song Mississippi Boweavil Blues
+remove song Long Lo
+remove song Ma Rainey's Black Bottom
+remove song Street Car Blues
+remove song Fixin' To Die Blues
+remove song Got The Blues
+remove song The Loco-Motion
+remove song The Things That I Used To Do
+print artist
+print song
+print blocks
+insert Jim Reeves<SEP>Jingle Bells
+insert Mongo Santamaria<SEP>Watermelon Man
+print artist
+print song
+print blocks
