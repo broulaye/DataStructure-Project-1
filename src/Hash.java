@@ -216,7 +216,7 @@ public class Hash {
         Handle[] copy = valueArray.clone();
         valueArray = new Handle[valueArray.length * 2];
         for (Handle handle : copy) {
-            if (handle != null ) {
+            if (handle != null && !handle.isTombStone()) {
                 insert(handle);
             }
         }
