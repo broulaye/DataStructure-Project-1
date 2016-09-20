@@ -28,3 +28,97 @@ Memory pool expanded to be 96 bytes.
 total songs: 1
 |Bukka White| 4
 total artists: 1
+|Sleepy John Estes| is added to the artist database.
+|Street Car Bluesinsert Johnny Winter| is added to the song database.
+|Bukka White's second song| does not exist in the song database.
+(95,0)
+|Sleepy John Estes| 0
+|Bukka White| 4
+total artists: 2
+|Bukka White's first song| 8
+|Street Car Bluesinsert Johnny Winter| 9
+total songs: 2
+Memory pool expanded to be 128 bytes.
+|Another Johnny Winter| is added to the artist database.
+Memory pool expanded to be 160 bytes.
+|Johnny Winter's first song| is added to the song database.
+(147,13)
+|Sleepy John Estes| 0
+|Bukka White| 4
+|Another Johnny Winter| 8
+total artists: 3
+|Johnny Winter's first song| 0
+|Bukka White's first song| 8
+|Street Car Bluesinsert Johnny Winter| 9
+total songs: 3
+Memory pool expanded to be 192 bytes.
+|Johnny Winter| is added to the artist database.
+|Johnny Winter's second song| is added to the song database.
+(191,1)
+|Sleepy John Estes| 0
+|Bukka White| 4
+|Johnny Winter| 5
+|Another Johnny Winter| 8
+total artists: 4
+|Johnny Winter's first song| 0
+|Johnny Winter's second song| 3
+|Bukka White's first song| 8
+|Street Car Bluesinsert Johnny Winter| 9
+total songs: 4
+|Johnny Winter| duplicates a record already in the artist database.
+Memory pool expanded to be 224 bytes.
+|Johnny Winter's third song| is added to the song database.
+(219,5)
+|Sleepy John Estes| 0
+|Bukka White| 4
+|Johnny Winter| 5
+|Another Johnny Winter| 8
+total artists: 4
+|Johnny Winter's first song| 0
+|Johnny Winter's third song| 1
+|Johnny Winter's second song| 3
+|Bukka White's first song| 8
+|Street Car Bluesinsert Johnny Winter| 9
+total songs: 5
+|Another Johnny Winter| duplicates a record already in the artist database.
+|Johnny Winter's second song| duplicates a record already in the song database.
+(219,5)
+|Sleepy John Estes| 0
+|Bukka White| 4
+|Johnny Winter| 5
+|Another Johnny Winter| 8
+total artists: 4
+|Johnny Winter's first song| 0
+|Johnny Winter's third song| 1
+|Johnny Winter's second song| 3
+|Bukka White's first song| 8
+|Street Car Bluesinsert Johnny Winter| 9
+total songs: 5
+|Johnny Winter| duplicates a record already in the artist database.
+|Johnny Winter's first song| duplicates a record already in the song database.
+(219,5)
+|Sleepy John Estes| 0
+|Bukka White| 4
+|Johnny Winter| 5
+|Another Johnny Winter| 8
+total artists: 4
+|Johnny Winter's first song| 0
+|Johnny Winter's third song| 1
+|Johnny Winter's second song| 3
+|Bukka White's first song| 8
+|Street Car Bluesinsert Johnny Winter| 9
+total songs: 5
+|Another Johnny Winter| duplicates a record already in the artist database.
+|Johnny Winter's third song| duplicates a record already in the song database.
+(219,5)
+|Sleepy John Estes| 0
+|Bukka White| 4
+|Johnny Winter| 5
+|Another Johnny Winter| 8
+total artists: 4
+|Johnny Winter's first song| 0
+|Johnny Winter's third song| 1
+|Johnny Winter's second song| 3
+|Bukka White's first song| 8
+|Street Car Bluesinsert Johnny Winter| 9
+total songs: 5

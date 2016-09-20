@@ -20,3 +20,32 @@ remove song Mississippi Boweavil Blues
 print blocks
 print song
 print artist
+insert Sleepy John Estes<SEP>Street Car Bluesinsert Johnny Winter<SEP>Johnny Winter's first song
+remove song Bukka White's second song
+print blocks
+print artist
+print song
+insert Another Johnny Winter<SEP>Johnny Winter's first song
+print blocks
+print artist
+print song
+insert Johnny Winter<SEP>Johnny Winter's second song
+print blocks
+print artist
+print song
+insert Johnny Winter<SEP>Johnny Winter's third song
+print blocks
+print artist
+print song
+insert Another Johnny Winter<SEP>Johnny Winter's second song
+print blocks
+print artist
+print song
+insert Johnny Winter<SEP>Johnny Winter's first song
+print blocks
+print artist
+print song
+insert Another Johnny Winter<SEP>Johnny Winter's third song
+print blocks
+print artist
+print song
