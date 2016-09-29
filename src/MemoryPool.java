@@ -51,7 +51,7 @@ public class MemoryPool {
                     "Memory pool expanded to be " + pool.length + " bytes.");
             whereToStore = freeBlockList.getNextAvailable(length);
         }
-        
+                
         // copy size to pool as 2 byte number
         pool[whereToStore] = (byte) ((length1 >> 8) & 0xFF);
         pool[whereToStore + 1] = (byte) (length1 & 0xFF);
@@ -125,7 +125,7 @@ public class MemoryPool {
      * @return a string representation of the blocks
      */
     public String printFreeBlocks() {
-        if (freeBlockList.isEmpty() && pool.length > 0) {
+        if (freeBlockList.isEmpty()) {
             return "(" + (pool.length) + "," + "0)";
         }
         return freeBlockList.printBlocks();

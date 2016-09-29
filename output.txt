@@ -1,24 +1,24 @@
 |When Summer's Through| does not exist in the song database.
-(0,32)
+(0,30)
 total songs: 0
 total artists: 0
 |Blind Lemon Jefferson| is added to the artist database.
-Memory pool expanded to be 64 bytes.
+Memory pool expanded to be 60 bytes.
 |Long Lonesome Blues| is added to the song database.
 |Blind Lemon Jefferson| duplicates a record already in the artist database.
 |Long Lonesome Blues| duplicates a record already in the song database.
 |Ma Rainey| is added to the artist database.
-Memory pool expanded to be 96 bytes.
+Memory pool expanded to be 90 bytes.
 |Ma Rainey's Black Bottom| is added to the song database.
-Memory pool expanded to be 128 bytes.
+Memory pool expanded to be 120 bytes.
 |Charley Patton| is added to the artist database.
+Memory pool expanded to be 150 bytes.
 |Mississippi Boweavil Blues| is added to the song database.
-Memory pool expanded to be 160 bytes.
 |Sleepy John Estes| is added to the artist database.
-Memory pool expanded to be 192 bytes.
+Memory pool expanded to be 180 bytes.
 |Street Car Blues| is added to the song database.
 |Bukka White| is added to the artist database.
-Memory pool expanded to be 224 bytes.
+Memory pool expanded to be 210 bytes.
 |Fixin' To Die Blues| is added to the song database.
 |Blind Lemon Jefferson| 0
 |Sleepy John Estes| 1
@@ -35,17 +35,17 @@ total songs: 5
 artist hash table size doubled.
 |Guitar Slim| is added to the artist database.
 song hash table size doubled.
-Memory pool expanded to be 256 bytes.
+Memory pool expanded to be 240 bytes.
 |The Things That I Used To Do| is added to the song database.
 |Style Council| does not exist in the artist database.
 |Ma Rainey| is removed from the artist database.
 |Mississippi Boweavil Blues| is removed from the song database.
 |(The Best Part Of) Breakin' Up| does not exist in the song database.
-(44,11) -> (97,28) -> (239,17)
+(44,11) -> (97,28) -> (239,1)
 |Blind Lemon Jefferson| duplicates a record already in the artist database.
 |Got The Blues| is added to the song database.
 |Little Eva| is added to the artist database.
-Memory pool expanded to be 288 bytes.
+Memory pool expanded to be 270 bytes.
 |The Loco-Motion| is added to the song database.
 |Blind Lemon Jefferson| 0
 |Bukka White| 4
@@ -63,8 +63,9 @@ total artists: 6
 |The Loco-Motion| 18
 total songs: 7
 |Jim Reeves| is added to the artist database.
+Memory pool expanded to be 300 bytes.
 |Jingle Bells| is added to the song database.
-Memory pool expanded to be 320 bytes.
 |Mongo Santamaria| is added to the artist database.
+Memory pool expanded to be 330 bytes.
 |Watermelon Man| is added to the song database.
-(44,11) -> (121,4) -> (319,1)
+(44,11) -> (124,1) -> (316,14)
