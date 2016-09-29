@@ -52,8 +52,6 @@ public class MemoryPool {
             whereToStore = freeBlockList.getNextAvailable(length);
         }
         
-        System.out.println("String appended at location: " + whereToStore);
-        
         // copy size to pool as 2 byte number
         pool[whereToStore] = (byte) ((length1 >> 8) & 0xFF);
         pool[whereToStore + 1] = (byte) (length1 & 0xFF);
@@ -128,7 +126,7 @@ public class MemoryPool {
      */
     public String printFreeBlocks() {
         if (freeBlockList.isEmpty() && pool.length > 0) {
-            return "(" + (pool.length - 1) + "," + "0)";
+            return "(" + (pool.length) + "," + "0)";
         }
         return freeBlockList.printBlocks();
     }

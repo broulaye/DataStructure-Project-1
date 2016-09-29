@@ -1,5 +1,4 @@
 import java.io.File;
-import java.io.IOException;
 import java.util.Scanner;
 
 // On my honor:
@@ -63,7 +62,6 @@ public class Memman {
 
             try {
                 reader = new Scanner(file);
-
                 String token;
 
                 // while the file got for line execute the following commands
@@ -74,7 +72,7 @@ public class Memman {
                 }
                 reader.close();
             }
-            catch (IOException exception) {
+            catch (Exception exception) {
                 exception.printStackTrace();
             }
         }

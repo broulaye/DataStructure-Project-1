@@ -17,8 +17,7 @@ public class Parser {
     /**
      * parse the file name fileN
      *
-     * @param fileN
-     *            name of the file to be parsed
+     * @param fileN name of the file to be parsed
      * @return a list of commands
      */
     public static Commands parse(String fileN) {
@@ -31,40 +30,28 @@ public class Parser {
 
         // create a new Commands object
         Commands commandsList = new Commands();
-
         try {
             reader = new Scanner(file);
-
             String token;
-            
             // while the file got for line execute the following commands
             while (reader.hasNextLine()) {
-
                 Command command = new Command();
-
                 token = reader.nextLine();
-                token.trim();
+                token = token.trim();
                 String s = "";
-
                 String[] value = new String[2];
-
                 String[] line = token.split(" ");
-
                 switch (line[0]) {
                     case "insert":
                         command.setOp(Operation.insert);
-
                         for (int i = 1; i < line.length; i++) {
                             s += line[i] + " ";
                         }
-
                         value = s.split("<SEP>");
                         command.setValues(value);
                         break;
                     case "remove":
-
                         command.setOp(Operation.remove);
-
                         if (line[1].equals("song")) {
                             command.setTyp(Type.Song);
                         }
@@ -78,10 +65,8 @@ public class Parser {
                         for (int i = 2; i < line.length; i++) {
                             s += line[i] + " ";
                         }
-
                         value[0] = s;
                         command.setValues(value);
-
                         break;
                     case "print":
                         command.setOp(Operation.print);
@@ -99,29 +84,19 @@ public class Parser {
                             System.out.println("Illegal type: " + line[1]);
                         }
 
-                        for (int i = 2; i < line.length; i++) {
-                            s += line[i] + " ";
-                        }
-
                         value = s.split("");
                         command.setValues(value);
-
                         break;
                     default:
                         break;
-
                 }
-
                 commandsList.add(command);
-
             }
-
             reader.close();
         }
         catch (IOException exception) {
             exception.printStackTrace();
         }
-
         return commandsList;
     }
 

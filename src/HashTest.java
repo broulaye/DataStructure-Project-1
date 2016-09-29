@@ -135,9 +135,13 @@ public class HashTest extends TestCase {
      */
     public void testRemoveElement() {
         MemManager manager = new MemManager(1);
+        String word = "Cheicks";
         try {
-            Hash table = new Hash(1, manager, testString);
-            Assert.assertFalse(table.removeString("kodonso"));
+            Hash table = new Hash(10, manager, testString);
+            assertFalse(table.removeString(word));
+            assertTrue(table.insertString(word, writer));
+            assertTrue(table.removeString(word));
+            assertTrue(table.insertString(word, writer));
         }
         catch (Exception e) {
             assertTrue(e instanceof Exception);

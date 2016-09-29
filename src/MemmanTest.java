@@ -55,9 +55,14 @@ public class MemmanTest extends TestCase {
         final String[] arguments = new String[3];
         arguments[0] = "10";
         arguments[1] = "32";
+        arguments[2] = "bad-file.txt";
+        Memman.main(arguments);
         arguments[2] = "P1SampleInput.txt";
         Memman.main(arguments);
         String value = null;
         assertNull(value);
+        Memman.main(null);
+        arguments[0] = "-19";
+        Memman.main(arguments);
     }
 }

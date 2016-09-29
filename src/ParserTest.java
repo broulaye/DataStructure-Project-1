@@ -47,7 +47,12 @@ public class ParserTest extends TestCase {
         catch (Exception exception) {
             e = exception;
         }
-
+        try {
+            Parser.parse("corrupted-file.txt");
+        }
+        catch (Exception exception) {
+            e = exception;
+        }
         assertNull(e);
 
     }
